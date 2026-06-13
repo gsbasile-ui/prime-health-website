@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Prime Health by Gianfranco Stracuzzi helps people build better energy, sleep, and health through real food, real habits, and 1:1 coaching.">
+  <title>Prime Health | Real Food. Real Habits. Real Results.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f5ef;
+      --paper: #fffdf7;
+      --ink: #17372b;
+      --muted: #667369;
+      --line: rgba(23, 55, 43, 0.14);
+      --line-strong: rgba(23, 55, 43, 0.26);
+      --green: #2f6f4e;
+      --green-dark: #17372b;
+      --lime: #badb74;
+      --mint: #dcebd2;
+      --clay: #b16b42;
+      --sun: #f1c85b;
+      --white: #ffffff;
+      --shadow: 0 24px 70px rgba(23, 55, 43, 0.12);
+      --serif: "Libre Baskerville", Georgia, serif;
+      --sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 16% 12%, rgba(186, 219, 116, 0.32), transparent 26rem),
+        radial-gradient(circle at 90% 18%, rgba(241, 200, 91, 0.22), transparent 24rem),
+        var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.5;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .page-shell {
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: rgba(247, 245, 239, 0.86);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav-inner,
+    .section-inner {
+      width: min(1160px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .nav-inner {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand-lockup {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line-strong);
+      border-radius: 50%;
+      background:
+        linear-gradient(135deg, var(--green), var(--lime));
+      color: var(--white);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      flex: 0 0 auto;
+    }
+
+    .brand-name {
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      line-height: 1;
+    }
+
+    .brand-sub {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover { color: var(--green-dark); }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 13px 18px;
+      border: 1px solid var(--green-dark);
+      border-radius: 999px;
+      background: var(--green-dark);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+      white-space: nowrap;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(23, 55, 43, 0.18);
+      background: var(--green);
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--green-dark);
+      border-color: var(--line-strong);
+    }
+
+    .button.secondary:hover {
+      border-color: var(--green-dark);
+      background: rgba(255, 255, 255, 0.62);
+    }
+
+    .hero {
+      padding: 66px 0 30px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(340px, 0.78fr);
+      gap: 42px;
+      align-items: center;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 253, 247, 0.72);
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .kicker::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--lime);
+      box-shadow: 0 0 0 5px rgba(186, 219, 116, 0.24);
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: var(--green-dark);
+      line-height: 1.02;
+    }
+
+    h1 {
+      margin-top: 22px;
+      font-family: var(--serif);
+      font-size: clamp(48px, 7vw, 92px);
+      letter-spacing: -0.02em;
+      max-width: 860px;
+    }
+
+    .hero-copy {
+      margin-top: 24px;
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 19px;
+    }
+
+    .hero-actions {
+      margin-top: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-proof {
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .proof-pill {
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 253, 247, 0.72);
+      color: var(--green-dark);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .hero-card {
+      position: relative;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.82), rgba(220,235,210,0.72));
+      box-shadow: var(--shadow);
+    }
+
+    .coach-panel {
+      min-height: 500px;
+      border-radius: 22px;
+      padding: 28px;
+      background:
+        linear-gradient(rgba(23, 55, 43, 0.08), rgba(23, 55, 43, 0.2)),
+        linear-gradient(145deg, #f8e5b9, #dcebd2 48%, #9fc78b);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .visual-logo {
+      width: 118px;
+      height: 118px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.66);
+      background: rgba(255, 253, 247, 0.62);
+      display: grid;
+      place-items: center;
+      color: var(--green-dark);
+      font-family: var(--serif);
+      font-size: 42px;
+      font-weight: 700;
+      box-shadow: 0 20px 50px rgba(23, 55, 43, 0.16);
+    }
+
+    .coach-label {
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.56);
+      border-radius: 18px;
+      background: rgba(255, 253, 247, 0.78);
+      backdrop-filter: blur(10px);
+    }
+
+    .coach-label strong {
+      display: block;
+      color: var(--green-dark);
+      font-size: 20px;
+    }
+
+    .coach-label span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .trust-band {
+      padding: 18px 0 54px;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255, 253, 247, 0.72);
+      overflow: hidden;
+    }
+
+    .trust-item {
+      padding: 22px;
+      min-height: 116px;
+      border-right: 1px solid var(--line);
+    }
+    .trust-item:last-child { border-right: 0; }
+    .trust-item span {
+      color: var(--clay);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .trust-item strong {
+      display: block;
+      margin-top: 12px;
+      color: var(--green-dark);
+      font-size: 22px;
+      line-height: 1.12;
+    }
+
+    section {
+      padding: 68px 0;
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: minmax(0, 0.86fr) minmax(280px, 0.5fr);
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(34px, 4.8vw, 62px);
+      letter-spacing: -0.02em;
+    }
+
+    .section-heading p,
+    .large-copy {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255, 253, 247, 0.82);
+      min-height: 230px;
+    }
+
+    .card h3 {
+      font-size: 23px;
+      letter-spacing: -0.01em;
+    }
+
+    .card p {
+      margin-top: 14px;
+      color: var(--muted);
+    }
+
+    .tag {
+      display: inline-flex;
+      margin-bottom: 18px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--mint);
+      color: var(--green-dark);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .founder {
+      background: var(--green-dark);
+      color: var(--white);
+    }
+
+    .founder h2,
+    .founder h3 { color: var(--white); }
+    .founder .section-heading p,
+    .founder .large-copy { color: rgba(255, 255, 255, 0.72); }
+
+    .founder-grid {
+      display: grid;
+      grid-template-columns: minmax(300px, 0.65fr) minmax(0, 1fr);
+      gap: 34px;
+      align-items: stretch;
+    }
+
+    .founder-visual {
+      min-height: 420px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 28px;
+      background:
+        linear-gradient(rgba(23, 55, 43, 0.2), rgba(23, 55, 43, 0.5)),
+        linear-gradient(145deg, #7aa66f, #d5b05d 45%, #f1eee3);
+      display: flex;
+      align-items: flex-end;
+      padding: 26px;
+    }
+
+    .founder-note {
+      padding: 20px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(10px);
+    }
+
+    .founder-copy {
+      display: grid;
+      align-content: center;
+      gap: 18px;
+    }
+
+    .founder-copy p {
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 18px;
+    }
+
+    .process-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .process-item {
+      display: grid;
+      grid-template-columns: 58px minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255, 253, 247, 0.82);
+    }
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--green-dark);
+      color: var(--white);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+    }
+
+    .process-item h3 { font-size: 22px; }
+    .process-item p {
+      margin-top: 7px;
+      color: var(--muted);
+    }
+
+    .cta {
+      padding: 78px 0 88px;
+    }
+
+    .cta-panel {
+      padding: clamp(28px, 6vw, 62px);
+      border-radius: 30px;
+      background:
+        linear-gradient(120deg, rgba(23, 55, 43, 0.9), rgba(47, 111, 78, 0.86)),
+        var(--green-dark);
+      color: var(--white);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 30px;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-panel h2 { color: var(--white); }
+    .cta-panel p {
+      margin-top: 14px;
+      max-width: 650px;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 18px;
+    }
+
+    .cta-actions {
+      display: grid;
+      gap: 12px;
+      justify-items: stretch;
+    }
+
+    .cta .button {
+      background: var(--white);
+      color: var(--green-dark);
+      border-color: var(--white);
+    }
+
+    .cta .button.secondary {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.34);
+    }
+
+    footer {
+      padding: 24px 0 34px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 14px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links a:not(.button) { display: none; }
+      .hero-grid,
+      .section-heading,
+      .founder-grid,
+      .cta-panel {
+        grid-template-columns: 1fr;
+      }
+      .hero { padding-top: 44px; }
+      .coach-panel { min-height: 390px; }
+      .trust-grid,
+      .cards-grid { grid-template-columns: 1fr; }
+      .trust-item { border-right: 0; border-bottom: 1px solid var(--line); }
+      .trust-item:last-child { border-bottom: 0; }
+      .cta-actions { justify-items: start; }
+    }
+
+    @media (max-width: 560px) {
+      .nav-inner,
+      .section-inner { width: min(100% - 28px, 1160px); }
+      .nav-inner { min-height: 68px; }
+      .brand-mark { width: 38px; height: 38px; }
+      .brand-sub { display: none; }
+      .nav .button { min-height: 40px; padding: 10px 12px; font-size: 11px; }
+      h1 { font-size: 44px; }
+      .hero-copy { font-size: 17px; }
+      .hero-actions { display: grid; }
+      .button { width: 100%; }
+      section { padding: 50px 0; }
+      .card,
+      .process-item { padding: 20px; }
+      .process-item { grid-template-columns: 1fr; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="nav" aria-label="Main navigation">
+      <div class="nav-inner">
+        <a class="brand-lockup" href="#top" aria-label="Prime Health home">
+          <span class="brand-mark">PH</span>
+          <span>
+            <span class="brand-name">Prime Health</span>
+            <span class="brand-sub">Health & Habits Coaching</span>
+          </span>
+        </a>
+        <nav class="nav-links" aria-label="Site links">
+          <a href="#about">About</a>
+          <a href="#offer">Offer</a>
+          <a href="#process">Process</a>
+          <a class="button" href="#contact">Book consult</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="section-inner hero-grid">
+          <div>
+            <span class="kicker">Real food. Real habits. Real results.</span>
+            <h1 id="hero-title">Build better health through real food and real habits.</h1>
+            <p class="hero-copy">Prime Health helps you improve energy, sleep, and day-to-day health with practical habit coaching from Gianfranco Stracuzzi.</p>
+            <div class="hero-actions">
+              <a class="button" href="#contact">Book a consultation</a>
+              <a class="button secondary" href="https://www.instagram.com/prime_health_co/" target="_blank" rel="noreferrer">Follow the challenge</a>
+            </div>
+            <div class="hero-proof" aria-label="Prime Health focus areas">
+              <span class="proof-pill">More energy</span>
+              <span class="proof-pill">Better sleep</span>
+              <span class="proof-pill">Better health</span>
+            </div>
+          </div>
+
+          <aside class="hero-card" aria-label="Prime Health coaching card">
+            <div class="coach-panel">
+              <div class="visual-logo">PH</div>
+              <div class="coach-label">
+                <strong>Gianfranco Stracuzzi</strong>
+                <span>Health & Habits Coach</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <div class="trust-band">
+        <div class="section-inner trust-grid" aria-label="Prime Health trust points">
+          <div class="trust-item">
+            <span>Coaching</span>
+            <strong>1:1 support for practical habit change.</strong>
+          </div>
+          <div class="trust-item">
+            <span>Food</span>
+            <strong>Simple real-food decisions you can repeat.</strong>
+          </div>
+          <div class="trust-item">
+            <span>Challenge</span>
+            <strong>The &euro;10 Real Food Challenge.</strong>
+          </div>
+        </div>
+      </div>
+
+      <section id="about" aria-labelledby="about-title">
+        <div class="section-inner">
+          <div class="section-heading">
+            <h2 id="about-title">Health does not need to feel complicated.</h2>
+            <p>Prime Health is built around the basics people can actually follow: real food, repeatable habits, better routines, and support that keeps the plan grounded.</p>
+          </div>
+          <div class="cards-grid">
+            <article class="card">
+              <span class="tag">Energy</span>
+              <h3>Start with daily inputs.</h3>
+              <p>Food, sleep, movement, and consistency shape how you feel. The coaching starts by making those inputs clearer and easier to repeat.</p>
+            </article>
+            <article class="card">
+              <span class="tag">Sleep</span>
+              <h3>Build rhythms that support recovery.</h3>
+              <p>Better health is not only about effort. It also comes from routines that help the body slow down, recover, and show up better the next day.</p>
+            </article>
+            <article class="card">
+              <span class="tag">Habits</span>
+              <h3>Make the plan livable.</h3>
+              <p>The goal is not a perfect week. The goal is a simple system you can keep returning to without starting over every Monday.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="founder" aria-labelledby="founder-title">
+        <div class="section-inner founder-grid">
+          <div class="founder-visual">
+            <div class="founder-note">
+              <h3>Founder-led coaching</h3>
+              <p class="large-copy">Personal discipline, soccer background, and health habits brought into a direct coaching format.</p>
+            </div>
+          </div>
+          <div class="founder-copy">
+            <span class="kicker">Meet the coach</span>
+            <h2 id="founder-title">Gianfranco Stracuzzi</h2>
+            <p>Gianfranco is the health and habits coach behind Prime Health. His public profiles connect personal discipline, soccer, and health coaching into one clear idea: better health comes from real habits you can practice daily.</p>
+            <p>Prime Health does not position the work as a quick fix. It focuses on food, sleep, energy, and consistency so clients can improve the way they live, not just chase a short-term result.</p>
+            <div class="hero-actions">
+              <a class="button" href="https://www.instagram.com/gstracuzzi10/" target="_blank" rel="noreferrer">Founder profile</a>
+              <a class="button secondary" href="https://www.instagram.com/prime_health_co/" target="_blank" rel="noreferrer">Prime Health Instagram</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="offer" aria-labelledby="offer-title">
+        <div class="section-inner">
+          <div class="section-heading">
+            <h2 id="offer-title">Coaching for people who want a simpler way to get healthy.</h2>
+            <p>Prime Health currently points visitors toward 1:1 work and the &euro;10 Real Food Challenge. The site keeps that offer direct and easy to understand.</p>
+          </div>
+          <div class="cards-grid">
+            <article class="card">
+              <span class="tag">1:1 Coaching</span>
+              <h3>Personal habit support.</h3>
+              <p>Work directly with Gianfranco to assess where your habits are now, simplify the next steps, and build a routine you can follow.</p>
+            </article>
+            <article class="card">
+              <span class="tag">Real Food</span>
+              <h3>Food choices without overthinking.</h3>
+              <p>The coaching language stays close to the brand promise: real food, real habits, real results.</p>
+            </article>
+            <article class="card">
+              <span class="tag">Challenge</span>
+              <h3>The &euro;10 Real Food Challenge.</h3>
+              <p>A low-friction entry point for people who want to start improving what they eat without waiting for the perfect plan.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="process" aria-labelledby="process-title">
+        <div class="section-inner">
+          <div class="section-heading">
+            <h2 id="process-title">A practical path from stuck to consistent.</h2>
+            <p>No medical claims. No overpromising. Just a clear coaching process built around daily behavior.</p>
+          </div>
+          <div class="process-list">
+            <article class="process-item">
+              <span class="step-number">01</span>
+              <div>
+                <h3>Assess your current habits.</h3>
+                <p>Start with what your days actually look like: food, sleep, movement, energy, and the routines that keep repeating.</p>
+              </div>
+            </article>
+            <article class="process-item">
+              <span class="step-number">02</span>
+              <div>
+                <h3>Simplify the food plan.</h3>
+                <p>Focus on real-food choices that reduce friction and make progress easier to repeat.</p>
+              </div>
+            </article>
+            <article class="process-item">
+              <span class="step-number">03</span>
+              <div>
+                <h3>Improve the routines around sleep and energy.</h3>
+                <p>Build small daily rhythms that support better recovery, steadier energy, and healthier decisions.</p>
+              </div>
+            </article>
+            <article class="process-item">
+              <span class="step-number">04</span>
+              <div>
+                <h3>Track what is working.</h3>
+                <p>Keep the process honest by looking at consistency, behavior, and how the client feels over time.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="cta" aria-labelledby="contact-title">
+        <div class="section-inner cta-panel">
+          <div>
+            <h2 id="contact-title">Ready to build better habits?</h2>
+            <p>Book a consultation with Prime Health or start by following the Real Food Challenge on Instagram. A dedicated booking link can be added here when the client provides it.</p>
+          </div>
+          <div class="cta-actions">
+            <a class="button" href="https://www.instagram.com/prime_health_co/" target="_blank" rel="noreferrer">Book through Instagram</a>
+            <a class="button secondary" href="https://www.instagram.com/prime_health_co/" target="_blank" rel="noreferrer">Message Prime Health</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="section-inner footer-inner">
+        <p>Prime Health by Gianfranco Stracuzzi. Health & habits coaching.</p>
+        <div class="footer-links">
+          <a href="https://www.instagram.com/prime_health_co/" target="_blank" rel="noreferrer">@prime_health_co</a>
+          <a href="https://www.instagram.com/gstracuzzi10/" target="_blank" rel="noreferrer">@gstracuzzi10</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

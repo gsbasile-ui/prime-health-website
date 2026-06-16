@@ -1,6 +1,6 @@
 # Prime Health Website
 
-Static v1 website for Prime Health, a health and habits coaching brand by Gianfranco Stracuzzi.
+Static website for Prime Health, a health and habits coaching brand by Gianfranco Stracuzzi.
 
 ## Source Evidence
 
@@ -11,12 +11,14 @@ Public Instagram metadata verified on June 13, 2026:
 
 ## Files
 
-- `index.html` - full static landing page.
-- `assets/` - reserved for future client images, logo files, or screenshots.
+- `index.html` - full static landing page with EN/ES/DE language switching, pricing plans, scroll animations, and active nav state.
+- `assets/founder-field.jpg` - approved founder photo for hero/founder visuals.
+- `assets/founder-sky.jpg` - approved founder photo for founder story visuals.
 - `vercel.json` - static deployment config.
 
 ## Notes
 
 - No medical or clinical claims are made.
 - Booking CTAs currently route to Instagram because no dedicated booking link was provided.
-- Replace visual placeholders with approved client imagery once available.
+- Prime Health coaching is presented as educational and habit-based, not medical advice, diagnosis, or treatment.
+- If the two founder JPGs are not present locally, the page uses non-broken visual fallback panels until the files are added.

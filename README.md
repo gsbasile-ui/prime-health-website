@@ -12,6 +12,7 @@ Public Instagram metadata verified on June 13, 2026:
 ## Files
 
 - `index.html` - full static landing page with EN/ES/DE language switching, pricing plans, scroll animations, and active nav state.
+- `assets/prime-health-logo.jpg` - approved Prime Health Co. logo.
 - `assets/founder-field.jpg` - approved founder photo for hero/founder visuals.
 - `assets/founder-sky.jpg` - approved founder photo for founder story visuals.
 - `vercel.json` - static deployment config.

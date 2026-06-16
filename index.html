@@ -79,18 +79,23 @@
     }
 
     .brand-mark {
-      width: 42px;
-      height: 42px;
+      width: 46px;
+      height: 46px;
       border: 1px solid var(--line-strong);
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--green), var(--lime));
-      color: var(--white);
+      background: var(--paper);
       display: grid;
       place-items: center;
-      font-weight: 900;
-      letter-spacing: 0.02em;
       flex: 0 0 auto;
+      overflow: hidden;
       box-shadow: 0 10px 24px rgba(23, 55, 43, 0.16);
+    }
+
+    .brand-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
     }
 
     .brand-name {
@@ -288,6 +293,11 @@
       object-position: center;
       filter: saturate(1.04) contrast(1.02);
     }
+    .logo-card img {
+      object-fit: cover;
+      object-position: center;
+    }
+
     .photo-card.missing-photo::after {
       content: "Founder photo slot";
       position: absolute;
@@ -479,7 +489,30 @@
     }
 
     @media (max-width: 1080px) {
-      .nav-links { display: none; }
+      .nav-inner {
+        min-height: auto;
+        padding: 10px 0 12px;
+        flex-wrap: wrap;
+      }
+      .nav-right {
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .nav-links {
+        display: flex;
+        flex: 1 1 auto;
+        min-width: 0;
+        overflow-x: auto;
+        scrollbar-width: none;
+        padding-bottom: 2px;
+      }
+      .nav-links::-webkit-scrollbar { display: none; }
+      .nav-link {
+        padding: 10px 12px;
+        background: rgba(255, 253, 247, 0.52);
+      }
       .plans-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
@@ -520,7 +553,7 @@
     <header class="nav" aria-label="Main navigation">
       <div class="nav-inner">
         <a class="brand-lockup" href="#top" aria-label="Prime Health home">
-          <span class="brand-mark">PH</span>
+          <span class="brand-mark"><img src="assets/prime-health-logo.jpg" alt="Prime Health Co. logo"></span>
           <span>
             <span class="brand-name">Prime Health</span>
             <span class="brand-sub" data-i18n="brand.sub">Health & Habits Coaching</span>
@@ -562,10 +595,10 @@
           </div>
 
           <aside class="hero-card reveal-scale" aria-label="Prime Health coaching card">
-            <div class="photo-card missing-photo">
-              <img src="assets/founder-field.jpg" alt="Gianfranco Stracuzzi outdoors under a wide sky" onerror="this.closest('.photo-card').classList.add('missing-photo'); this.remove();">
+            <div class="photo-card logo-card">
+              <img src="assets/prime-health-logo.jpg" alt="Prime Health Co. logo">
               <div class="photo-caption">
-                <strong>Gianfranco Stracuzzi</strong>
+                <strong>Prime Health Co.</strong>
                 <span data-i18n="founder.role">Health & Habits Coach</span>
               </div>
             </div>

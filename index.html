@@ -46,6 +46,54 @@
     img { display: block; max-width: 100%; }
     button { font: inherit; }
 
+    body::before {
+      content: "";
+      position: fixed;
+      inset: -20% -10% auto;
+      height: 58vh;
+      background:
+        radial-gradient(circle at 24% 35%, rgba(186, 219, 116, 0.28), transparent 18rem),
+        radial-gradient(circle at 72% 20%, rgba(241, 200, 91, 0.2), transparent 20rem);
+      pointer-events: none;
+      z-index: -1;
+      animation: atmosphereDrift 16s ease-in-out infinite alternate;
+    }
+
+    @keyframes atmosphereDrift {
+      from { transform: translate3d(-1.5%, -1%, 0) scale(1); }
+      to { transform: translate3d(1.5%, 2%, 0) scale(1.04); }
+    }
+
+    @keyframes softFloat {
+      0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+      50% { transform: translate3d(0, -12px, 0) rotate(0.5deg); }
+    }
+
+    @keyframes pulseRing {
+      0%, 100% { opacity: 0.22; transform: translate(-50%, -50%) scale(0.96); }
+      50% { opacity: 0.44; transform: translate(-50%, -50%) scale(1.05); }
+    }
+
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      z-index: 80;
+      background: transparent;
+      pointer-events: none;
+    }
+
+    .scroll-progress span {
+      display: block;
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--green), var(--lime), var(--sun));
+      box-shadow: 0 0 18px rgba(186, 219, 116, 0.52);
+      transition: width 0.08s linear;
+    }
+
     .page-shell { min-height: 100vh; overflow: hidden; }
 
     .nav {
@@ -96,7 +144,10 @@
       height: 100%;
       object-fit: cover;
       object-position: center;
+      transition: transform 0.35s ease;
     }
+
+    .brand-lockup:hover .brand-mark img { transform: scale(1.08) rotate(2deg); }
 
     .brand-name {
       display: block;
@@ -212,6 +263,34 @@
       align-items: center;
     }
 
+    .hero-orbit {
+      position: absolute;
+      width: 118px;
+      height: 118px;
+      border-radius: 50%;
+      border: 1px solid rgba(47, 111, 78, 0.18);
+      background: rgba(255, 253, 247, 0.52);
+      box-shadow: 0 18px 46px rgba(23, 55, 43, 0.12);
+      pointer-events: none;
+      z-index: 0;
+      animation: softFloat 7s ease-in-out infinite;
+    }
+
+    .hero-orbit.one {
+      right: -28px;
+      top: 44px;
+      width: 94px;
+      height: 94px;
+    }
+
+    .hero-orbit.two {
+      left: -26px;
+      bottom: 62px;
+      width: 70px;
+      height: 70px;
+      animation-delay: -2.4s;
+    }
+
     .kicker {
       display: inline-flex;
       align-items: center;
@@ -256,7 +335,9 @@
       color: var(--green-dark);
       font-size: 13px;
       font-weight: 900;
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
     }
+    .proof-pill:hover { transform: translateY(-3px); border-color: var(--line-strong); background: rgba(255, 253, 247, 0.96); }
 
     .hero-card {
       position: relative;
@@ -265,7 +346,10 @@
       border-radius: 30px;
       background: linear-gradient(180deg, rgba(255,255,255,0.84), rgba(220,235,210,0.74));
       box-shadow: var(--shadow);
+      transform-style: preserve-3d;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
+    .hero-card:hover { box-shadow: var(--shadow-strong); }
 
     .photo-card {
       position: relative;
@@ -276,6 +360,8 @@
         linear-gradient(180deg, rgba(80, 130, 168, 0.35), rgba(23, 55, 43, 0.78)),
         linear-gradient(145deg, #a9c8df, #e7d295 42%, #6f8b62 72%, #18392d);
       isolation: isolate;
+      transform: translate3d(var(--motion-x, 0px), var(--motion-y, 0px), 0);
+      transition: transform 0.28s ease, box-shadow 0.28s ease;
     }
     .photo-card::before {
       content: "";
@@ -292,6 +378,25 @@
       object-fit: cover;
       object-position: center;
       filter: saturate(1.04) contrast(1.02);
+      transform: scale(1.01);
+      transition: transform 0.65s ease, filter 0.65s ease;
+    }
+    .photo-card:hover img { transform: scale(1.055); filter: saturate(1.12) contrast(1.05); }
+
+    .logo-card::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 62%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: rgba(241, 200, 91, 0.16);
+      transform: translate(-50%, -50%);
+      animation: pulseRing 5s ease-in-out infinite;
+      z-index: 2;
+      pointer-events: none;
+      mix-blend-mode: screen;
     }
     .logo-card img {
       object-fit: cover;
@@ -358,6 +463,12 @@
       background: rgba(255, 253, 247, 0.84);
       min-height: 230px;
       box-shadow: 0 18px 48px rgba(23, 55, 43, 0.06);
+      transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
+    }
+    .card:hover, .plan-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(47, 111, 78, 0.3);
+      box-shadow: 0 28px 70px rgba(23, 55, 43, 0.13);
     }
     .card h3, .plan-card h3 { font-size: 23px; letter-spacing: -0.01em; }
     .card p, .plan-card p { margin-top: 14px; color: var(--muted); }
@@ -380,7 +491,10 @@
     .founder-grid { display: grid; grid-template-columns: minmax(310px, 0.76fr) minmax(0, 1fr); gap: 34px; align-items: center; }
     .founder-gallery { display: grid; grid-template-columns: 0.92fr 0.72fr; gap: 14px; align-items: end; }
     .founder-gallery .photo-card:first-child { min-height: 490px; }
-    .founder-gallery .photo-card:last-child { min-height: 390px; transform: translateY(28px); }
+    .founder-gallery .photo-card:last-child {
+      min-height: 390px;
+      transform: translate3d(var(--motion-x, 0px), calc(28px + var(--motion-y, 0px)), 0);
+    }
     .founder-copy { display: grid; align-content: center; gap: 18px; }
     .founder-copy p { color: rgba(255, 255, 255, 0.76); font-size: 18px; }
     .founder .button { background: var(--white); color: var(--green-dark); border-color: var(--white); }
@@ -448,6 +562,12 @@
       border: 1px solid var(--line);
       border-radius: 22px;
       background: rgba(255, 253, 247, 0.84);
+      transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
+    }
+    .process-item:hover {
+      transform: translateX(8px);
+      border-color: rgba(47, 111, 78, 0.28);
+      box-shadow: 0 18px 48px rgba(23, 55, 43, 0.08);
     }
     .step-number { width: 48px; height: 48px; border-radius: 50%; background: var(--green-dark); color: var(--white); display: grid; place-items: center; font-weight: 900; }
     .process-item h3 { font-size: 22px; }
@@ -486,6 +606,7 @@
       .reveal, .reveal-scale { opacity: 1; transform: none; }
       .plan-card.featured { transform: none; }
       .founder-gallery .photo-card:last-child { transform: none; }
+      .photo-card { --motion-x: 0px !important; --motion-y: 0px !important; }
     }
 
     @media (max-width: 1080px) {
@@ -549,6 +670,7 @@
   </style>
 </head>
 <body>
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
   <div class="page-shell">
     <header class="nav" aria-label="Main navigation">
       <div class="nav-inner">
@@ -595,6 +717,8 @@
           </div>
 
           <aside class="hero-card reveal-scale" aria-label="Prime Health coaching card">
+            <span class="hero-orbit one"></span>
+            <span class="hero-orbit two"></span>
             <div class="photo-card logo-card">
               <img src="assets/prime-health-logo.jpg" alt="Prime Health Co. logo">
               <div class="photo-caption">
@@ -906,6 +1030,8 @@
     const defaultLang = "en";
     const plansGrid = document.querySelector("#plansGrid");
     const languageButtons = document.querySelectorAll(".lang-btn");
+    const scrollProgress = document.querySelector("#scrollProgress");
+    const canUseMotion = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     function renderPlans(lang) {
       plansGrid.innerHTML = translations[lang].plans.map((plan) => `
@@ -945,7 +1071,7 @@
 
     let revealObserver;
     function observeRevealItems() {
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      if (!canUseMotion) {
         document.querySelectorAll(".reveal, .reveal-scale").forEach((item) => item.classList.add("is-visible"));
         return;
       }
@@ -980,8 +1106,41 @@
       image.addEventListener("load", () => image.closest(".photo-card").classList.remove("missing-photo"));
     });
 
+    function updateScrollProgress() {
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = maxScroll > 0 ? Math.min(100, Math.max(0, (window.scrollY / maxScroll) * 100)) : 0;
+      scrollProgress.style.width = `${progress}%`;
+    }
+
+    function setupMotionTracking() {
+      if (!canUseMotion || window.matchMedia("(max-width: 900px)").matches) return;
+      document.querySelectorAll(".hero-card, .founder-gallery").forEach((area) => {
+        area.addEventListener("pointermove", (event) => {
+          const bounds = area.getBoundingClientRect();
+          const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+          const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+          area.querySelectorAll(".photo-card").forEach((card, index) => {
+            const strength = index === 0 ? 14 : 9;
+            card.style.setProperty("--motion-x", `${x * strength}px`);
+            card.style.setProperty("--motion-y", `${y * strength}px`);
+          });
+        });
+        area.addEventListener("pointerleave", () => {
+          area.querySelectorAll(".photo-card").forEach((card) => {
+            card.style.setProperty("--motion-x", "0px");
+            card.style.setProperty("--motion-y", "0px");
+          });
+        });
+      });
+    }
+
+    window.addEventListener("scroll", updateScrollProgress, { passive: true });
+    window.addEventListener("resize", updateScrollProgress);
+
     setLanguage(localStorage.getItem("primeHealthLanguage") || defaultLang);
     observeRevealItems();
+    setupMotionTracking();
+    updateScrollProgress();
   </script>
 </body>
 </html>

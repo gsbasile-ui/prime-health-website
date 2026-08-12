@@ -30,6 +30,7 @@ Public Instagram metadata verified on June 13, 2026:
 - Sandro Rodriguez: `https://gsbasile-ui.github.io/prime-health-website/sandro-rodriguez/`
 - The Sandro guide is public by direct URL but is intentionally omitted from the marketing-site navigation.
 - Product links open Walmart in a new tab. Product availability, price, pickup, and delivery depend on the shopper's location.
+- The guide footer carries the official VTS mark and a linked `Powered by Visionary Technologies Systems` credit.
 
 ## Vault Connection
 

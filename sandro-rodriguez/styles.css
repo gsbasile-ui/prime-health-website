@@ -369,7 +369,7 @@ h1 em { color: var(--green); font-style: normal; }
 .rules-shell { position: relative; display: grid; grid-template-columns: .75fr 1.25fr; gap: clamp(60px, 10vw, 130px); }
 .rules-intro { position: sticky; top: 175px; align-self: start; }
 .rules-intro > p { color: rgba(255,255,255,.65); }
-.month-stamp { width: 142px; height: 142px; margin-top: 42px; display: flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid rgba(255,255,255,.15); border-radius: 50%; transform: rotate(-8deg); }
+.month-stamp { width: 142px; height: 142px; margin-top: 42px; display: flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid rgba(255,255,255,.15); border-radius: 50%; }
 .month-stamp span { color: var(--lime); font: 700 49px/1 var(--serif); }
 .month-stamp small { color: rgba(255,255,255,.7); font-size: 9px; font-weight: 900; letter-spacing: .08em; line-height: 1.2; }
 .rules-list { margin: 0; padding: 0; list-style: none; counter-reset: rules; }

@@ -12,6 +12,7 @@ Public Instagram metadata verified on June 13, 2026:
 ## Files
 
 - `index.html` - full static landing page with EN/ES/DE language switching, pricing plans, scroll animations, and active nav state.
+- `sandro-rodriguez/` - public Spanish client guide with first-month instructions, food filters, five breakfast combinations, and Walmart purchase links.
 - `assets/prime-health-logo.jpg` - approved Prime Health Co. logo.
 - `assets/founder-field.jpg` - approved founder photo for hero/founder visuals.
 - `assets/founder-sky.jpg` - approved founder photo for founder story visuals.
@@ -23,3 +24,15 @@ Public Instagram metadata verified on June 13, 2026:
 - Booking CTAs currently route to Instagram because no dedicated booking link was provided.
 - Prime Health coaching is presented as educational and habit-based, not medical advice, diagnosis, or treatment.
 - If the two founder JPGs are not present locally, the page uses non-broken visual fallback panels until the files are added.
+
+## Personalized Client Guides
+
+- Sandro Rodriguez: `https://gsbasile-ui.github.io/prime-health-website/sandro-rodriguez/`
+- The Sandro guide is public by direct URL but is intentionally omitted from the marketing-site navigation.
+- Product links open Walmart in a new tab. Product availability, price, pickup, and delivery depend on the shopper's location.
+
+## Vault Connection
+
+Parent client index: [[03 Clients/Client Records/Client Records Index|Client Records Index]]
+
+Raw plan source: [[03 Clients/Client Records/Prime Health/Sources/Sandro Rodriguez Food and First Month Instructions.txt|Sandro Rodriguez Food and First Month Instructions]]

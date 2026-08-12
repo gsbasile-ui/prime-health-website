@@ -24,6 +24,11 @@ html {
   scroll-padding-top: 142px;
 }
 
+#mi-guia,
+#alimentos,
+#desayunos,
+#reglas { scroll-margin-top: 142px; }
+
 body {
   margin: 0;
   color: var(--ink);
@@ -339,19 +344,19 @@ h1 em { color: var(--green); font-style: normal; }
 .no-script { padding: 18px; background: var(--paper); border-radius: 10px; }
 
 .breakfast-section { background: var(--paper); }
-.meal-figure { max-width: 860px; margin: 0 auto 28px; overflow: hidden; background: var(--bg); border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow); }
-.meal-figure img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+.meal-figure { max-width: 720px; margin: 0 auto 28px; overflow: hidden; background: var(--bg); border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow); }
+.meal-figure img { width: 100%; height: auto; object-fit: contain; }
 .meal-figure figcaption { padding: 12px 16px; color: var(--muted); font-size: 11px; }
-.breakfast-tabs { max-width: 860px; margin: 0 auto 13px; display: flex; gap: 9px; overflow-x: auto; scrollbar-width: none; }
+.breakfast-tabs { max-width: 720px; margin: 0 auto 13px; display: flex; gap: 9px; overflow-x: auto; scrollbar-width: none; }
 .breakfast-tabs::-webkit-scrollbar { display: none; }
 .breakfast-tab { min-width: 64px; min-height: 48px; color: var(--green-dark); background: var(--bg); border: 1px solid var(--line); border-radius: 11px; cursor: pointer; font: 900 13px var(--sans); }
 .breakfast-tab[aria-selected="true"] { color: var(--white); background: var(--green-dark); }
-.breakfast-detail { max-width: 860px; min-height: 170px; margin: 0 auto; padding: 28px; display: grid; grid-template-columns: 160px 1fr; gap: 25px; align-items: center; background: #eef2e8; border-radius: 17px; }
+.breakfast-detail { max-width: 720px; min-height: 170px; margin: 0 auto; padding: 28px; display: grid; grid-template-columns: 160px 1fr; gap: 25px; align-items: center; background: #eef2e8; border-radius: 17px; }
 .breakfast-number { color: var(--green); font: 700 78px/1 var(--serif); opacity: .35; }
 .breakfast-detail h3 { margin-bottom: 8px; font-size: 22px; }
 .ingredient-list { margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; list-style: none; }
 .ingredient-list li { padding: 7px 10px; background: var(--paper); border: 1px solid var(--line); border-radius: 999px; font-size: 11px; font-weight: 700; }
-.plate-guide { max-width: 1000px; margin: 80px auto 0; display: grid; grid-template-columns: 1.1fr .9fr; align-items: stretch; background: var(--green-dark); border-radius: 22px; overflow: hidden; }
+.plate-guide { max-width: 860px; margin: 80px auto 0; display: grid; grid-template-columns: 1.1fr .9fr; align-items: stretch; background: var(--green-dark); border-radius: 22px; overflow: hidden; }
 .plate-image img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: contain; }
 .plate-copy { padding: clamp(32px, 5vw, 58px); align-self: center; color: var(--white); }
 .plate-copy h3 { margin-bottom: 18px; font: 700 clamp(29px, 3vw, 43px)/1.14 var(--serif); }
@@ -410,6 +415,10 @@ footer { padding: 35px 0; color: var(--white); background: #102b21; }
 
 @media (max-width: 640px) {
   html { scroll-padding-top: 129px; }
+  #mi-guia,
+  #alimentos,
+  #desayunos,
+  #reglas { scroll-margin-top: 129px; }
   .shell, .header-inner, .section-nav { width: min(100% - 28px, 1160px); }
   .header-inner { height: 70px; }
   .brand img { width: 42px; height: 42px; }

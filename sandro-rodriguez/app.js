@@ -292,6 +292,17 @@
       element.classList.add("visible");
     });
   }, 900);
+  var scrollTopLink = document.querySelector("[data-scroll-top]");
+  if (scrollTopLink) {
+    scrollTopLink.addEventListener("click", function (event) {
+      event.preventDefault();
+      var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: 0, left: 0, behavior: reducedMotion ? "auto" : "smooth" });
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState(null, "", window.location.pathname + window.location.search);
+      }
+    });
+  }
   window.addEventListener("scroll", updateNavigation, { passive: true });
   updateNavigation();
 }());

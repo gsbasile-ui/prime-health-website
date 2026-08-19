@@ -46,6 +46,8 @@
     { category: "grasas", name: "Organic Unsweetened Coconut Chips", detail: "Chips de coco orgánico sin azúcar añadida.", url: walmartSearch("Organic Unsweetened Coconut Chips") },
     { category: "grasas", name: "It's Delish Raw Coconut Chips", detail: "Coco crudo sin azúcar añadida.", url: walmartSearch("It's Delish Raw Unsweetened Coconut Chips") },
     { category: "grasas", name: "Carrington Farms Organic Ghee", detail: "Mantequilla clarificada orgánica.", url: "https://www.walmart.com/ip/Carrington-Farms-Organic-Ghee-Clarified-Butter-12-Oz/599348862?classType=VARIANT", direct: true },
+    { category: "grasas", name: "Servio Grass-Fed Traditional Ghee", detail: "Mantequilla clarificada grass-fed, tradicional y shelf-stable.", url: "https://www.walmart.com/ip/Servio-Grass-Fed-Non-GMO-Traditional-Ghee-Clarified-Butter-Shelf-Stable-10-58-oz-Jar/255011649", direct: true },
+    { category: "grasas", name: "Organic Valley Salted Organic Butter", detail: "Mantequilla orgánica con sal de Organic Valley.", url: "https://www.walmart.com/ip/ORGANIC-VALLEY-Salted-Organic-Butter-8-oz/12247866658", direct: true },
 
     { category: "lacteos", name: "Stonyfield Organic Plain Greek Yogurt", detail: "Yogur griego natural orgánico con cultivos vivos.", url: walmartSearch("Stonyfield Organic Plain Greek Yogurt") },
     { category: "lacteos", name: "Nancy's Organic Probiotic Cottage Cheese", detail: "Queso cottage orgánico de leche entera con probióticos.", url: "https://www.walmart.com/ip/Nancys-Organic-Probiotic-Whole-Milk-Cottage-Cheese-Tub-4-Milk-Fat-14-g-Protein-16-oz-tub/524608806?classType=REGULAR", direct: true },

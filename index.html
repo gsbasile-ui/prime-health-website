@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Prime Health by Gianfranco Stracuzzi helps people build better energy, sleep, and health through real food, real habits, and 1:1 coaching.">
+  <meta name="description" content="Prime Health acompaña a personas que quieren recuperar energía, mejorar sus hábitos y construir una vida más saludable con Gianfranco Stracuzzi.">
   <title>Prime Health | Real Food. Real Habits. Real Results.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,6 +34,7 @@
     html { scroll-behavior: smooth; scroll-padding-top: 96px; }
     body {
       min-height: 100vh;
+      overflow-x: hidden;
       background:
         radial-gradient(circle at 16% 12%, rgba(186, 219, 116, 0.32), transparent 26rem),
         radial-gradient(circle at 90% 18%, rgba(185, 214, 232, 0.42), transparent 24rem),
@@ -262,6 +263,7 @@
       gap: 42px;
       align-items: center;
     }
+    .hero-grid > * { min-width: 0; }
 
     .hero-orbit {
       position: absolute;
@@ -304,6 +306,8 @@
       font-weight: 900;
       letter-spacing: 0.12em;
       text-transform: uppercase;
+      max-width: 100%;
+      white-space: normal;
     }
     .kicker::before {
       content: "";
@@ -321,6 +325,7 @@
       font-size: clamp(46px, 7vw, 92px);
       letter-spacing: -0.02em;
       max-width: 900px;
+      overflow-wrap: anywhere;
     }
     h2 { font-family: var(--serif); font-size: clamp(34px, 4.8vw, 62px); letter-spacing: -0.02em; }
 
@@ -382,6 +387,7 @@
       transition: transform 0.65s ease, filter 0.65s ease;
     }
     .photo-card:hover img { transform: scale(1.055); filter: saturate(1.12) contrast(1.05); }
+    .hero-photo img { object-position: center 34%; }
 
     .logo-card::before {
       content: "";
@@ -500,6 +506,48 @@
     .founder .button { background: var(--white); color: var(--green-dark); border-color: var(--white); }
     .founder .button.secondary { background: transparent; color: var(--white); border-color: rgba(255, 255, 255, 0.34); }
 
+    .story-gallery {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 22px;
+    }
+    .story-photo {
+      position: relative;
+      min-height: 290px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+    .story-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+    .story-photo:hover img { transform: scale(1.05); }
+    .story-photo figcaption {
+      position: absolute;
+      inset: auto 12px 12px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(23, 55, 43, 0.82);
+      backdrop-filter: blur(8px);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .results { padding-top: 20px; }
+    .results-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+    .result-item {
+      min-height: 190px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(255, 253, 247, 0.82);
+      box-shadow: 0 16px 42px rgba(23, 55, 43, 0.06);
+    }
+    .result-number { display: block; color: var(--clay); font-family: var(--serif); font-size: 34px; font-weight: 700; }
+    .result-item p { margin-top: 16px; color: var(--green-dark); font-weight: 800; }
+
     .plans { background: linear-gradient(180deg, rgba(220, 235, 210, 0.52), rgba(247, 245, 239, 0.2)); }
     .plans-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: stretch; }
     .plan-card {
@@ -523,13 +571,14 @@
       height: 5px;
       background: linear-gradient(90deg, var(--green), var(--lime), var(--sun));
     }
-    .plan-price {
+    .plan-duration {
       font-family: var(--serif);
       color: var(--green-dark);
-      font-size: 34px;
+      font-size: 25px;
       line-height: 1;
       font-weight: 700;
     }
+    .plan-image { width: calc(100% + 48px); height: 180px; margin: -24px -24px 2px; object-fit: cover; }
     .plan-title { text-transform: uppercase; font-size: 18px; letter-spacing: 0.08em; }
     .plan-subtitle { color: var(--green-dark); font-weight: 900; font-size: 16px; }
     .plan-description { margin-top: 0 !important; }
@@ -542,6 +591,9 @@
       font-size: 14px;
     }
     .plan-list li::before { content: "✓"; color: var(--green); font-weight: 900; }
+    .plan-actions { display: grid; gap: 9px; margin-top: 6px; }
+    .plan-actions .button { width: 100%; white-space: normal; text-align: center; }
+    .plan-call { color: var(--green); font-size: 12px; font-weight: 900; text-align: center; text-decoration: underline; text-underline-offset: 3px; }
     .disclaimer {
       margin-top: 18px;
       padding: 16px 18px;
@@ -591,6 +643,33 @@
     .cta .button { background: var(--white); color: var(--green-dark); border-color: var(--white); }
     .cta .button.secondary { background: transparent; color: var(--white); border-color: rgba(255, 255, 255, 0.34); }
 
+    .guides-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.7fr);
+      gap: 34px;
+      align-items: center;
+      padding: clamp(28px, 5vw, 54px);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(255, 253, 247, 0.94), rgba(220, 235, 210, 0.88));
+      box-shadow: var(--shadow);
+    }
+    .guides-panel p { margin-top: 14px; color: var(--muted); font-size: 17px; }
+    .guide-form { display: grid; gap: 12px; }
+    .guide-form label { color: var(--green-dark); font-size: 13px; font-weight: 900; }
+    .guide-form input {
+      width: 100%;
+      min-height: 50px;
+      padding: 12px 15px;
+      border: 1px solid var(--line-strong);
+      border-radius: 12px;
+      background: var(--paper);
+      color: var(--ink);
+      font: inherit;
+    }
+    .guide-form input:focus { outline: 3px solid rgba(186, 219, 116, 0.42); border-color: var(--green); }
+    .form-status { min-height: 20px; color: var(--green-dark); font-size: 12px; font-weight: 800; }
+
     footer { padding: 24px 0 34px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
     .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
     .footer-links { display: flex; gap: 14px; font-weight: 800; }
@@ -638,22 +717,24 @@
     }
 
     @media (max-width: 900px) {
-      .hero-grid, .section-heading, .founder-grid, .cta-panel { grid-template-columns: 1fr; }
+      .hero-grid, .section-heading, .founder-grid, .cta-panel, .guides-panel { grid-template-columns: 1fr; }
       .hero { padding-top: 44px; }
       .photo-card { min-height: 430px; }
       .trust-grid, .cards-grid { grid-template-columns: 1fr; }
       .trust-item { border-right: 0; border-bottom: 1px solid var(--line); }
       .trust-item:last-child { border-bottom: 0; }
       .founder-gallery .photo-card:first-child, .founder-gallery .photo-card:last-child { min-height: 390px; transform: none; }
+      .results-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .cta-actions { justify-items: start; }
     }
 
     @media (max-width: 640px) {
       .nav-inner, .section-inner { width: min(100% - 28px, 1180px); }
-      .nav-inner { min-height: 70px; }
+      .nav-inner { min-height: 70px; padding: 10px 0 8px; }
       .brand-mark { width: 38px; height: 38px; }
       .brand-sub { display: none; }
-      .nav-right { gap: 8px; }
+      .nav-right { width: 100%; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; }
+      .nav-links { width: 100%; }
       .lang-btn { min-width: 34px; min-height: 30px; font-size: 11px; }
       h1 { font-size: 43px; }
       .hero-copy { font-size: 17px; }
@@ -661,7 +742,7 @@
       .button { width: 100%; }
       section { padding: 52px 0; }
       .card, .plan-card, .process-item { padding: 20px; }
-      .plans-grid, .founder-gallery { grid-template-columns: 1fr; }
+      .plans-grid, .founder-gallery, .story-gallery, .results-grid { grid-template-columns: 1fr; }
       .plan-card.featured { transform: none; }
       .process-item { grid-template-columns: 1fr; }
       .footer-inner { align-items: flex-start; flex-direction: column; }
@@ -690,8 +771,8 @@
             <a class="nav-link" href="#contact" data-i18n="nav.contact">Contact</a>
           </nav>
           <div class="language-switcher" aria-label="Language selector">
-            <button class="lang-btn active" type="button" data-lang="en" aria-pressed="true">EN</button>
-            <button class="lang-btn" type="button" data-lang="es" aria-pressed="false">ES</button>
+            <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
+            <button class="lang-btn active" type="button" data-lang="es" aria-pressed="true">ES</button>
             <button class="lang-btn" type="button" data-lang="de" aria-pressed="false">DE</button>
           </div>
         </div>
@@ -706,8 +787,8 @@
             <h1 id="hero-title" data-i18n="hero.title">Build better health through real food and real habits.</h1>
             <p class="hero-copy" data-i18n="hero.copy">Prime Health helps you improve energy, sleep, and day-to-day health with practical habit coaching from Gianfranco Stracuzzi.</p>
             <div class="hero-actions">
-              <a class="button" href="https://www.instagram.com/prime_health_co/" target="_blank" rel="noreferrer" data-i18n="cta.book">Book through Instagram</a>
-              <a class="button secondary" href="https://www.instagram.com/prime_health_co/" target="_blank" rel="noreferrer" data-i18n="cta.challenge">Follow the challenge</a>
+              <a class="button whatsapp-link" href="#" target="_blank" rel="noreferrer" data-i18n="cta.whatsapp">Hablar con Gianfranco</a>
+              <a class="button secondary" href="https://calendly.com/gstracuzzi1213/30min" target="_blank" rel="noreferrer" data-i18n="cta.call">Reservar llamada gratuita</a>
             </div>
             <div class="hero-proof" aria-label="Prime Health focus areas">
               <span class="proof-pill" data-i18n="proof.energy">More energy</span>
@@ -716,11 +797,11 @@
             </div>
           </div>
 
-          <aside class="hero-card reveal-scale" aria-label="Prime Health coaching card">
+          <aside class="hero-card reveal-scale" aria-label="Gianfranco Stracuzzi entrenando">
             <span class="hero-orbit one"></span>
             <span class="hero-orbit two"></span>
-            <div class="photo-card logo-card">
-              <img src="assets/prime-health-logo.jpg" alt="Prime Health Co. logo">
+            <div class="photo-card hero-photo">
+              <img src="assets/founder-hero.jpg" alt="Gianfranco Stracuzzi entrenando con un balón de fútbol">
               <div class="photo-caption">
                 <strong>Prime Health Co.</strong>
                 <span data-i18n="founder.role">Health & Habits Coach</span>
@@ -742,7 +823,7 @@
           </div>
           <div class="trust-item">
             <span data-i18n="trust.three.label">Challenge</span>
-            <strong data-i18n="trust.three.copy">The €10 Real Food Challenge.</strong>
+            <strong data-i18n="trust.three.copy">Un método para cuerpo, mente y disciplina.</strong>
           </div>
         </div>
       </div>
@@ -773,14 +854,30 @@
         </div>
       </section>
 
+      <section class="results" aria-labelledby="results-title">
+        <div class="section-inner">
+          <div class="section-heading reveal">
+            <h2 id="results-title" data-i18n="results.title">Resultados que se sienten en tu vida diaria.</h2>
+            <p data-i18n="results.copy">Objetivos concretos sobre los que trabajarás con estructura, seguimiento y hábitos sostenibles.</p>
+          </div>
+          <div class="results-grid">
+            <article class="result-item reveal"><span class="result-number">01</span><p data-i18n="results.one">Recuperar energía para completar el día con mayor estabilidad.</p></article>
+            <article class="result-item reveal"><span class="result-number">02</span><p data-i18n="results.two">Dormir mejor y levantarte con más claridad.</p></article>
+            <article class="result-item reveal"><span class="result-number">03</span><p data-i18n="results.three">Comer con estructura y reducir la ansiedad alrededor de la comida.</p></article>
+            <article class="result-item reveal"><span class="result-number">04</span><p data-i18n="results.four">Perder grasa mientras conservas fuerza y rendimiento.</p></article>
+            <article class="result-item reveal"><span class="result-number">05</span><p data-i18n="results.five">Mantener hábitos incluso durante semanas ocupadas.</p></article>
+          </div>
+        </div>
+      </section>
+
       <section class="founder" aria-labelledby="founder-title">
         <div class="section-inner founder-grid">
           <div class="founder-gallery reveal-scale">
             <div class="photo-card missing-photo">
-              <img src="assets/founder-field.jpg" alt="Gianfranco Stracuzzi standing outside after training" onerror="this.closest('.photo-card').classList.add('missing-photo'); this.remove();">
+              <img src="assets/founder-newspaper.jpg" alt="Gianfranco Stracuzzi jugando fútbol en Alemania" onerror="this.closest('.photo-card').classList.add('missing-photo'); this.remove();">
             </div>
             <div class="photo-card missing-photo">
-              <img src="assets/founder-sky.jpg" alt="Gianfranco Stracuzzi facing the sky outdoors" onerror="this.closest('.photo-card').classList.add('missing-photo'); this.remove();">
+              <img src="assets/founder-tottenham.jpg" alt="Gianfranco Stracuzzi en el estadio del Tottenham Hotspur" onerror="this.closest('.photo-card').classList.add('missing-photo'); this.remove();">
             </div>
           </div>
           <div class="founder-copy reveal">
@@ -788,10 +885,17 @@
             <h2 id="founder-title">Gianfranco Stracuzzi</h2>
             <p data-i18n="founder.copy1">Gianfranco is the health and habits coach behind Prime Health. His public profiles connect personal discipline, soccer, and health coaching into one clear idea: better health comes from real habits you can practice daily.</p>
             <p data-i18n="founder.copy2">Prime Health does not position the work as a quick fix. It focuses on food, sleep, energy, and consistency so clients can improve the way they live, not just chase a short-term result.</p>
+            <p data-i18n="founder.copy3">Su camino lo llevó de Venezuela a Estados Unidos y después a Europa, donde el fútbol profesional puso a prueba su disciplina lejos de su familia.</p>
+            <p data-i18n="founder.copy4">Después de una crisis de salud que cambió su perspectiva, estudió profundamente nutrición, sueño, recuperación, mentalidad y fe. De esa reconstrucción nació el método PRIME.</p>
             <div class="hero-actions">
-              <a class="button" href="https://www.instagram.com/gstracuzzi10/" target="_blank" rel="noreferrer" data-i18n="founder.cta1">Founder profile</a>
-              <a class="button secondary" href="https://www.instagram.com/prime_health_co/" target="_blank" rel="noreferrer" data-i18n="founder.cta2">Prime Health Instagram</a>
+              <a class="button whatsapp-link" href="#" target="_blank" rel="noreferrer" data-i18n="cta.whatsapp">Hablar con Gianfranco</a>
+              <a class="button secondary" href="https://www.instagram.com/gstracuzzi10/" target="_blank" rel="noreferrer" data-i18n="founder.cta1">Perfil del fundador</a>
             </div>
+          </div>
+          <div class="story-gallery">
+            <figure class="story-photo reveal"><img src="assets/founder-beach.jpg" alt="Gianfranco con un balón frente al mar"><figcaption data-i18n="story.one">El fútbol como escuela de constancia.</figcaption></figure>
+            <figure class="story-photo reveal"><img src="assets/founder-recovery.jpg" alt="Gianfranco practicando recuperación en la nieve"><figcaption data-i18n="story.two">Recuperación, control y conexión con el cuerpo.</figcaption></figure>
+            <figure class="story-photo reveal"><img src="assets/founder-sunset.jpg" alt="Gianfranco entrenando al amanecer"><figcaption data-i18n="story.three">Disciplina incluso cuando nadie está mirando.</figcaption></figure>
           </div>
         </div>
       </section>
@@ -828,8 +932,24 @@
             <h2 id="plans-title" data-i18n="plans.title">Choose your Prime Health plan.</h2>
             <p data-i18n="plans.copy">Each plan is designed around practical habit change, real food, better energy, and a healthier lifestyle that can last.</p>
           </div>
-          <div class="plans-grid" id="plansGrid" aria-label="Prime Health pricing plans"></div>
+          <div class="plans-grid" id="plansGrid" aria-label="Programas de acompañamiento Prime Health"></div>
           <p class="disclaimer reveal" data-i18n="plans.disclaimer">Prime Health coaching is educational and habit-based. It is not medical advice, diagnosis, or treatment.</p>
+        </div>
+      </section>
+
+      <section id="guides" aria-labelledby="guides-title">
+        <div class="section-inner guides-panel reveal-scale">
+          <div>
+            <span class="kicker" data-i18n="guides.kicker">Recursos gratuitos</span>
+            <h2 id="guides-title" data-i18n="guides.title">¿Quieres las guías de Prime Health?</h2>
+            <p data-i18n="guides.copy">Déjanos tu correo y abre WhatsApp para solicitar las guías directamente a Gianfranco.</p>
+          </div>
+          <form class="guide-form" id="guideForm">
+            <label for="guideEmail" data-i18n="guides.label">Tu correo electrónico</label>
+            <input id="guideEmail" name="email" type="email" autocomplete="email" required placeholder="tu@email.com">
+            <button class="button" type="submit" data-i18n="guides.submit">Quiero las guías</button>
+            <p class="form-status" id="guideStatus" role="status" aria-live="polite"></p>
+          </form>
         </div>
       </section>
 
@@ -879,8 +999,9 @@
             <p data-i18n="contact.copy">Book a consultation with Prime Health or start by following the Real Food Challenge on Instagram. A dedicated booking link can be added here when the client provides it.</p>
           </div>
           <div class="cta-actions">
-            <a class="button" href="https://www.instagram.com/prime_health_co/" target="_blank" rel="noreferrer" data-i18n="cta.book">Book through Instagram</a>
-            <a class="button secondary" href="https://www.instagram.com/prime_health_co/" target="_blank" rel="noreferrer" data-i18n="cta.message">Message Prime Health</a>
+            <a class="button whatsapp-link" href="#" target="_blank" rel="noreferrer" data-i18n="cta.whatsapp">Hablar por WhatsApp</a>
+            <a class="button secondary" href="https://calendly.com/gstracuzzi1213/30min" target="_blank" rel="noreferrer" data-i18n="cta.call">Reservar llamada gratuita</a>
+            <a class="button secondary" href="mailto:primexhealthgs@gmail.com" data-i18n="cta.email">Enviar un correo</a>
           </div>
         </div>
       </section>
@@ -892,6 +1013,7 @@
         <div class="footer-links">
           <a href="https://www.instagram.com/prime_health_co/" target="_blank" rel="noreferrer">@prime_health_co</a>
           <a href="https://www.instagram.com/gstracuzzi10/" target="_blank" rel="noreferrer">@gstracuzzi10</a>
+          <a href="mailto:primexhealthgs@gmail.com">primexhealthgs@gmail.com</a>
         </div>
       </div>
     </footer>
@@ -905,19 +1027,24 @@
         "hero.kicker": "Real food. Real habits. Real results.",
         "hero.title": "Build better health through real food and real habits.",
         "hero.copy": "Prime Health helps you improve energy, sleep, and day-to-day health with practical habit coaching from Gianfranco Stracuzzi.",
-        "cta.book": "Book through Instagram", "cta.challenge": "Follow the challenge", "cta.message": "Message Prime Health",
+        "cta.whatsapp": "Talk to Gianfranco", "cta.call": "Book a free call", "cta.email": "Send an email",
         "proof.energy": "More energy", "proof.sleep": "Better sleep", "proof.health": "Better health",
         "founder.role": "Health & Habits Coach",
         "trust.one.label": "Coaching", "trust.one.copy": "1:1 support for practical habit change.",
         "trust.two.label": "Food", "trust.two.copy": "Simple real-food decisions you can repeat.",
-        "trust.three.label": "Challenge", "trust.three.copy": "The €10 Real Food Challenge.",
+        "trust.three.label": "Method", "trust.three.copy": "A system for body, mind, and discipline.",
         "about.title": "Health does not need to feel complicated.",
         "about.copy": "Prime Health is built around the basics people can actually follow: real food, repeatable habits, better routines, and support that keeps the plan grounded.",
         "about.card1.tag": "Energy", "about.card1.title": "Start with daily inputs.", "about.card1.copy": "Food, sleep, movement, and consistency shape how you feel. The coaching starts by making those inputs clearer and easier to repeat.",
         "about.card2.tag": "Sleep", "about.card2.title": "Build rhythms that support recovery.", "about.card2.copy": "Better health is not only about effort. It also comes from routines that help the body slow down, recover, and show up better the next day.",
         "about.card3.tag": "Habits", "about.card3.title": "Make the plan livable.", "about.card3.copy": "The goal is not a perfect week. The goal is a simple system you can keep returning to without starting over every Monday.",
-        "founder.kicker": "Meet the coach", "founder.copy1": "Gianfranco is the health and habits coach behind Prime Health. His public profiles connect personal discipline, soccer, and health coaching into one clear idea: better health comes from real habits you can practice daily.",
-        "founder.copy2": "Prime Health does not position the work as a quick fix. It focuses on food, sleep, energy, and consistency so clients can improve the way they live, not just chase a short-term result.",
+        "results.title": "Results you can feel in everyday life.", "results.copy": "Concrete goals you will work toward with structure, accountability, and sustainable habits.",
+        "results.one": "Recover energy to finish the day with greater stability.", "results.two": "Sleep better and wake up with more clarity.", "results.three": "Eat with structure and reduce anxiety around food.", "results.four": "Lose fat while preserving strength and performance.", "results.five": "Maintain your habits even during busy weeks.",
+        "founder.kicker": "Meet the coach", "founder.copy1": "Gianfranco Stracuzzi is Venezuelan with Italian roots, a professional footballer, and the coach behind Prime Health.",
+        "founder.copy2": "His path took him from Venezuela to the United States and then to Europe, where football tested his discipline far from his family.",
+        "founder.copy3": "After a serious health crisis changed his perspective, he studied nutrition, sleep, recovery, mindset, faith, and the habits that support a stronger life.",
+        "founder.copy4": "The PRIME Method grew from that rebuilding process: a practical system for body, mind, discipline, and consistent execution.",
+        "story.one": "Football as a school of consistency.", "story.two": "Recovery, control, and connection with the body.", "story.three": "Discipline when nobody is watching.",
         "founder.cta1": "Founder profile", "founder.cta2": "Prime Health Instagram",
         "offer.title": "Coaching for people who want a simpler way to get healthy.",
         "offer.copy": "Prime Health points visitors toward 1:1 work, habit coaching, and structured plans for different levels of commitment.",
@@ -931,14 +1058,15 @@
         "process.step2.title": "Simplify the food plan.", "process.step2.copy": "Focus on real-food choices that reduce friction and make progress easier to repeat.",
         "process.step3.title": "Improve the routines around sleep and energy.", "process.step3.copy": "Build small daily rhythms that support better recovery, steadier energy, and healthier decisions.",
         "process.step4.title": "Track what is working.", "process.step4.copy": "Keep the process honest by looking at consistency, behavior, and how the client feels over time.",
-        "contact.title": "Ready to build better habits?", "contact.copy": "Book a consultation with Prime Health or start by following the Real Food Challenge on Instagram. A dedicated booking link can be added here when the client provides it.",
+        "guides.kicker": "Free resources", "guides.title": "Would you like the Prime Health guides?", "guides.copy": "Leave your email and open WhatsApp to request the guides directly from Gianfranco.", "guides.label": "Your email address", "guides.submit": "I want the guides", "guides.invalid": "Enter a valid email address.", "guides.ready": "Opening WhatsApp with your request...",
+        "contact.title": "Ready to leave the excuses behind?", "contact.copy": "Talk to Gianfranco on WhatsApp, book a free 30-minute call, or send Prime Health an email.",
         "footer.copy": "Prime Health by Gianfranco Stracuzzi. Health & habits coaching.",
         planLabel: "Plan",
         plans: [
-          { title: "Essential", price: "150€/Month", subtitle: "Recover your energy and build solid habits", desc: "Ideal for people who want to start improving their health without complications.", featured: false, items: ["More energy during the day.", "Better digestion.", "Better sleep quality.", "Less anxiety around food.", "Sustainable healthy habits.", "Early weight-loss results."] },
-          { title: "Transformation", price: "375€/3 Months", subtitle: "Restart your metabolism and transform your lifestyle", desc: "Three months to create a new version of yourself.", featured: true, items: ["Steady weight loss.", "More strength and performance.", "Automatic healthy routines.", "Better body composition.", "More mental clarity.", "A better relationship with food.", "More discipline and productivity."] },
-          { title: "Performance", price: "650€/6 Months", subtitle: "Optimize your body, energy, and performance", desc: "For people who want lasting results and a deeper transformation.", featured: false, items: ["Visible physical transformation.", "Stable energy all day.", "Better recovery.", "Higher physical and mental performance.", "Better sleep and recovery.", "Full control of your habits.", "A sustainable healthy lifestyle system."] },
-          { title: "Prime Elite", price: "1000€/Year", subtitle: "Become the best version of yourself", desc: "The most complete program for people seeking health, performance, and longevity.", featured: false, items: ["Maintain your ideal weight without obsession.", "High energy all year.", "Automatic and sustainable habits.", "Better metabolic health.", "More productivity and focus.", "Physical and mental strength.", "A lifestyle designed for longevity.", "Become someone who inspires others by example."] }
+          { title: "Essential", duration: "1 month", image: "assets/founder-beach.jpg", subtitle: "Recover your energy and build solid habits", desc: "A clear starting point for improving your health without unnecessary complication.", featured: false, items: ["More stable daily energy.", "Better sleep routines.", "A simpler food structure.", "Habits designed for real life."] },
+          { title: "Transformation", duration: "3 months", image: "assets/founder-performance.jpg", subtitle: "Transform your lifestyle", desc: "Three months to build stronger routines, improve your relationship with food, and create momentum.", featured: true, items: ["Consistent fat-loss habits.", "More strength and performance.", "Better body composition habits.", "Greater clarity and discipline."] },
+          { title: "Performance", duration: "6 months", image: "assets/founder-hero.jpg", subtitle: "Optimize body, energy, and performance", desc: "For people seeking lasting change and a deeper performance system.", featured: false, items: ["Stable energy through the day.", "Better recovery routines.", "Higher physical and mental performance.", "A sustainable health system."] },
+          { title: "Prime Elite", duration: "12 months", image: "assets/founder-sunset.jpg", subtitle: "Build your strongest version", desc: "The most complete program for health, performance, discipline, and longevity-focused habits.", featured: false, items: ["Year-round coaching structure.", "Sustainable automatic habits.", "Greater focus and resilience.", "A lifestyle built to last."] }
         ]
       },
       es: {
@@ -947,19 +1075,24 @@
         "hero.kicker": "Comida real. Hábitos reales. Resultados reales.",
         "hero.title": "Construye mejor salud con comida real y hábitos reales.",
         "hero.copy": "Prime Health te ayuda a mejorar tu energía, sueño y salud diaria con coaching práctico de hábitos junto a Gianfranco Stracuzzi.",
-        "cta.book": "Reservar por Instagram", "cta.challenge": "Seguir el challenge", "cta.message": "Escribir a Prime Health",
+        "cta.whatsapp": "Hablar con Gianfranco", "cta.call": "Reservar llamada gratuita", "cta.email": "Enviar un correo",
         "proof.energy": "Más energía", "proof.sleep": "Mejor sueño", "proof.health": "Mejor salud",
         "founder.role": "Health & Habits Coach",
         "trust.one.label": "Coaching", "trust.one.copy": "Acompañamiento 1:1 para cambiar hábitos de forma práctica.",
         "trust.two.label": "Comida", "trust.two.copy": "Decisiones simples de comida real que puedes repetir.",
-        "trust.three.label": "Challenge", "trust.three.copy": "El €10 Real Food Challenge.",
+        "trust.three.label": "Método", "trust.three.copy": "Un sistema para cuerpo, mente y disciplina.",
         "about.title": "La salud no tiene que sentirse complicada.",
         "about.copy": "Prime Health se basa en lo que las personas sí pueden sostener: comida real, hábitos repetibles, mejores rutinas y acompañamiento con los pies en la tierra.",
         "about.card1.tag": "Energía", "about.card1.title": "Empieza por tus hábitos diarios.", "about.card1.copy": "Comida, sueño, movimiento y constancia definen cómo te sientes. El coaching empieza aclarando esos inputs y haciéndolos más fáciles de repetir.",
         "about.card2.tag": "Sueño", "about.card2.title": "Crea ritmos que apoyen tu recuperación.", "about.card2.copy": "Mejorar la salud no es solo esfuerzo. También se trata de rutinas que ayudan al cuerpo a bajar revoluciones, recuperarse y rendir mejor al día siguiente.",
         "about.card3.tag": "Hábitos", "about.card3.title": "Haz que el plan sea sostenible.", "about.card3.copy": "El objetivo no es una semana perfecta. Es crear un sistema simple al que puedas volver sin empezar de cero cada lunes.",
-        "founder.kicker": "Conoce al coach", "founder.copy1": "Gianfranco es el health and habits coach detrás de Prime Health. Sus perfiles públicos conectan disciplina personal, fútbol y coaching de salud en una idea clara: una mejor salud nace de hábitos reales que puedes practicar cada día.",
-        "founder.copy2": "Prime Health no vende soluciones rápidas. Se enfoca en comida, sueño, energía y constancia para que los clientes mejoren la forma en que viven, no solo persigan un resultado temporal.",
+        "results.title": "Resultados que se sienten en tu vida diaria.", "results.copy": "Objetivos concretos sobre los que trabajarás con estructura, seguimiento y hábitos sostenibles.",
+        "results.one": "Recuperar energía para completar el día con mayor estabilidad.", "results.two": "Dormir mejor y levantarte con más claridad.", "results.three": "Comer con estructura y reducir la ansiedad alrededor de la comida.", "results.four": "Perder grasa mientras conservas fuerza y rendimiento.", "results.five": "Mantener hábitos incluso durante semanas ocupadas.",
+        "founder.kicker": "Conoce al coach", "founder.copy1": "Gianfranco Stracuzzi es venezolano con raíces italianas, futbolista profesional y el coach detrás de Prime Health.",
+        "founder.copy2": "Su camino lo llevó de Venezuela a Estados Unidos y después a Europa, donde el fútbol puso a prueba su disciplina lejos de su familia.",
+        "founder.copy3": "Después de una crisis de salud que cambió su perspectiva, profundizó en nutrición, sueño, recuperación, mentalidad, fe y los hábitos que sostienen una vida más fuerte.",
+        "founder.copy4": "De ese proceso de reconstrucción nació el método PRIME: un sistema práctico para cuerpo, mente, disciplina y ejecución constante.",
+        "story.one": "El fútbol como escuela de constancia.", "story.two": "Recuperación, control y conexión con el cuerpo.", "story.three": "Disciplina incluso cuando nadie está mirando.",
         "founder.cta1": "Perfil del fundador", "founder.cta2": "Instagram de Prime Health",
         "offer.title": "Coaching para personas que quieren una forma más simple de estar saludables.",
         "offer.copy": "Prime Health dirige a los visitantes hacia trabajo 1:1, coaching de hábitos y planes estructurados para distintos niveles de compromiso.",
@@ -973,14 +1106,15 @@
         "process.step2.title": "Simplifica el plan de comida.", "process.step2.copy": "Enfócate en decisiones de comida real que reduzcan fricción y hagan el progreso más fácil de repetir.",
         "process.step3.title": "Mejora las rutinas de sueño y energía.", "process.step3.copy": "Construye pequeños ritmos diarios que apoyen mejor recuperación, energía más estable y decisiones más saludables.",
         "process.step4.title": "Mide lo que funciona.", "process.step4.copy": "Mantén el proceso honesto mirando constancia, comportamiento y cómo se siente el cliente con el tiempo.",
-        "contact.title": "¿Listo para construir mejores hábitos?", "contact.copy": "Reserva una consulta con Prime Health o empieza siguiendo el Real Food Challenge en Instagram. Aquí se puede añadir un enlace de reserva cuando el cliente lo proporcione.",
+        "guides.kicker": "Recursos gratuitos", "guides.title": "¿Quieres las guías de Prime Health?", "guides.copy": "Déjanos tu correo y abre WhatsApp para solicitar las guías directamente a Gianfranco.", "guides.label": "Tu correo electrónico", "guides.submit": "Quiero las guías", "guides.invalid": "Introduce un correo válido.", "guides.ready": "Abriendo WhatsApp con tu solicitud...",
+        "contact.title": "¿Listo para dejar las excusas atrás?", "contact.copy": "Habla con Gianfranco por WhatsApp, reserva una llamada gratuita de 30 minutos o envía un correo a Prime Health.",
         "footer.copy": "Prime Health por Gianfranco Stracuzzi. Coaching de salud y hábitos.",
         planLabel: "Plan",
         plans: [
-          { title: "Essential", price: "150€/Mes", subtitle: "Recupera tu energía y construye hábitos sólidos", desc: "Ideal para personas que quieren empezar a mejorar su salud sin complicaciones.", featured: false, items: ["Más energía durante el día.", "Mejor digestión.", "Mejor calidad de sueño.", "Menos ansiedad por la comida.", "Hábitos saludables sostenibles.", "Primeros resultados de pérdida de peso."] },
-          { title: "Transformation", price: "375€/3 Meses", subtitle: "Reinicia tu metabolismo y transforma tu estilo de vida", desc: "Tres meses para crear una nueva versión de ti.", featured: true, items: ["Pérdida de peso constante.", "Más fuerza y rendimiento.", "Rutinas saludables automáticas.", "Mejor composición corporal.", "Más claridad mental.", "Mejor relación con la comida.", "Mayor disciplina y productividad."] },
-          { title: "Performance", price: "650€/6 Meses", subtitle: "Optimiza tu cuerpo, energía y rendimiento", desc: "Para quienes quieren resultados duraderos y una transformación profunda.", featured: false, items: ["Transformación física visible.", "Energía estable todo el día.", "Mejor recuperación.", "Mayor rendimiento físico y mental.", "Mejor sueño y recuperación.", "Control total de tus hábitos.", "Sistema de vida saludable sostenible."] },
-          { title: "Prime Elite", price: "1000€/Año", subtitle: "Conviértete en la mejor versión de ti mismo", desc: "Mi programa más completo para quienes buscan salud, rendimiento y longevidad.", featured: false, items: ["Mantener tu peso ideal sin obsesiones.", "Alto nivel de energía durante todo el año.", "Hábitos automáticos y sostenibles.", "Mejor salud metabólica.", "Mayor productividad y enfoque.", "Fortaleza física y mental.", "Un estilo de vida diseñado para la longevidad.", "Convertirte en una persona que inspira a otros con su ejemplo."] }
+          { title: "Essential", duration: "1 mes", image: "assets/founder-beach.jpg", subtitle: "Recupera tu energía y construye hábitos sólidos", desc: "Un punto de partida claro para mejorar tu salud sin complicaciones innecesarias.", featured: false, items: ["Energía diaria más estable.", "Mejores rutinas de sueño.", "Una estructura simple de alimentación.", "Hábitos pensados para tu vida real."] },
+          { title: "Transformation", duration: "3 meses", image: "assets/founder-performance.jpg", subtitle: "Transforma tu estilo de vida", desc: "Tres meses para fortalecer rutinas, mejorar tu relación con la comida y crear impulso.", featured: true, items: ["Hábitos constantes para perder grasa.", "Más fuerza y rendimiento.", "Hábitos para una mejor composición corporal.", "Mayor claridad y disciplina."] },
+          { title: "Performance", duration: "6 meses", image: "assets/founder-hero.jpg", subtitle: "Optimiza cuerpo, energía y rendimiento", desc: "Para quienes buscan un cambio duradero y un sistema de rendimiento más profundo.", featured: false, items: ["Energía estable durante el día.", "Mejores rutinas de recuperación.", "Mayor rendimiento físico y mental.", "Un sistema de salud sostenible."] },
+          { title: "Prime Elite", duration: "12 meses", image: "assets/founder-sunset.jpg", subtitle: "Construye tu versión más fuerte", desc: "El programa más completo para salud, rendimiento, disciplina y hábitos orientados a la longevidad.", featured: false, items: ["Estructura de coaching durante todo el año.", "Hábitos automáticos y sostenibles.", "Mayor enfoque y fortaleza mental.", "Un estilo de vida diseñado para durar."] }
         ]
       },
       de: {
@@ -989,19 +1123,24 @@
         "hero.kicker": "Echtes Essen. Echte Gewohnheiten. Echte Ergebnisse.",
         "hero.title": "Baue bessere Gesundheit mit echtem Essen und echten Gewohnheiten auf.",
         "hero.copy": "Prime Health hilft dir, Energie, Schlaf und Alltagsgesundheit mit praktischem Gewohnheitscoaching von Gianfranco Stracuzzi zu verbessern.",
-        "cta.book": "Über Instagram buchen", "cta.challenge": "Challenge folgen", "cta.message": "Prime Health schreiben",
+        "cta.whatsapp": "Mit Gianfranco sprechen", "cta.call": "Kostenloses Gespräch buchen", "cta.email": "E-Mail senden",
         "proof.energy": "Mehr Energie", "proof.sleep": "Besserer Schlaf", "proof.health": "Bessere Gesundheit",
         "founder.role": "Health & Habits Coach",
         "trust.one.label": "Coaching", "trust.one.copy": "1:1 Begleitung für praktische Gewohnheitsveränderung.",
         "trust.two.label": "Ernährung", "trust.two.copy": "Einfache Entscheidungen mit echtem Essen, die du wiederholen kannst.",
-        "trust.three.label": "Challenge", "trust.three.copy": "Die €10 Real Food Challenge.",
+        "trust.three.label": "Methode", "trust.three.copy": "Ein System für Körper, Geist und Disziplin.",
         "about.title": "Gesundheit muss sich nicht kompliziert anfühlen.",
         "about.copy": "Prime Health basiert auf Grundlagen, die Menschen wirklich umsetzen können: echtes Essen, wiederholbare Gewohnheiten, bessere Routinen und bodenständige Begleitung.",
         "about.card1.tag": "Energie", "about.card1.title": "Beginne mit deinen täglichen Inputs.", "about.card1.copy": "Essen, Schlaf, Bewegung und Konstanz prägen, wie du dich fühlst. Das Coaching macht diese Inputs klarer und leichter wiederholbar.",
         "about.card2.tag": "Schlaf", "about.card2.title": "Baue Rhythmen auf, die Erholung unterstützen.", "about.card2.copy": "Bessere Gesundheit entsteht nicht nur durch Anstrengung. Sie entsteht auch durch Routinen, die dem Körper helfen, herunterzufahren, sich zu erholen und am nächsten Tag besser da zu sein.",
         "about.card3.tag": "Gewohnheiten", "about.card3.title": "Mach den Plan lebbar.", "about.card3.copy": "Das Ziel ist keine perfekte Woche. Das Ziel ist ein einfaches System, zu dem du zurückkehren kannst, ohne jeden Montag neu anzufangen.",
-        "founder.kicker": "Lerne den Coach kennen", "founder.copy1": "Gianfranco ist der Health & Habits Coach hinter Prime Health. Seine öffentlichen Profile verbinden persönliche Disziplin, Fußball und Gesundheitscoaching zu einer klaren Idee: bessere Gesundheit entsteht aus echten Gewohnheiten, die du täglich praktizieren kannst.",
-        "founder.copy2": "Prime Health verkauft keine schnelle Lösung. Der Fokus liegt auf Essen, Schlaf, Energie und Konstanz, damit Klienten ihre Lebensweise verbessern und nicht nur einem kurzfristigen Ergebnis hinterherlaufen.",
+        "results.title": "Ergebnisse, die du im Alltag spürst.", "results.copy": "Konkrete Ziele, an denen du mit Struktur, Begleitung und nachhaltigen Gewohnheiten arbeitest.",
+        "results.one": "Energie zurückgewinnen und den Tag stabiler beenden.", "results.two": "Besser schlafen und klarer aufwachen.", "results.three": "Mit Struktur essen und Stress rund ums Essen reduzieren.", "results.four": "Fett verlieren und dabei Kraft und Leistung erhalten.", "results.five": "Gewohnheiten auch in vollen Wochen beibehalten.",
+        "founder.kicker": "Lerne den Coach kennen", "founder.copy1": "Gianfranco Stracuzzi ist Venezolaner mit italienischen Wurzeln, Profifußballer und der Coach hinter Prime Health.",
+        "founder.copy2": "Sein Weg führte ihn von Venezuela in die USA und später nach Europa, wo der Fußball seine Disziplin fern von der Familie auf die Probe stellte.",
+        "founder.copy3": "Nach einer schweren gesundheitlichen Krise vertiefte er sich in Ernährung, Schlaf, Erholung, Mentalität, Glauben und Gewohnheiten für ein stärkeres Leben.",
+        "founder.copy4": "Aus diesem Wiederaufbau entstand die PRIME Methode: ein praktisches System für Körper, Geist, Disziplin und konsequente Umsetzung.",
+        "story.one": "Fußball als Schule der Beständigkeit.", "story.two": "Erholung, Kontrolle und Verbindung zum Körper.", "story.three": "Disziplin, auch wenn niemand zusieht.",
         "founder.cta1": "Gründerprofil", "founder.cta2": "Prime Health Instagram",
         "offer.title": "Coaching für Menschen, die gesünder werden wollen, ohne alles zu verkomplizieren.",
         "offer.copy": "Prime Health führt Besucher zu 1:1 Arbeit, Gewohnheitscoaching und strukturierten Plänen für verschiedene Commitment-Level.",
@@ -1015,35 +1154,50 @@
         "process.step2.title": "Vereinfache deinen Ernährungsplan.", "process.step2.copy": "Konzentriere dich auf echte Lebensmittel und Entscheidungen, die Reibung reduzieren und Fortschritt leichter wiederholbar machen.",
         "process.step3.title": "Verbessere Routinen rund um Schlaf und Energie.", "process.step3.copy": "Baue kleine tägliche Rhythmen auf, die bessere Erholung, stabilere Energie und gesündere Entscheidungen unterstützen.",
         "process.step4.title": "Verfolge, was funktioniert.", "process.step4.copy": "Halte den Prozess ehrlich, indem du Konstanz, Verhalten und das Körpergefühl über Zeit betrachtest.",
-        "contact.title": "Bereit, bessere Gewohnheiten aufzubauen?", "contact.copy": "Buche eine Beratung mit Prime Health oder folge zuerst der Real Food Challenge auf Instagram. Ein eigener Buchungslink kann ergänzt werden, sobald der Kunde ihn bereitstellt.",
+        "guides.kicker": "Kostenlose Ressourcen", "guides.title": "Möchtest du die Prime Health Guides?", "guides.copy": "Hinterlasse deine E-Mail und öffne WhatsApp, um die Guides direkt bei Gianfranco anzufordern.", "guides.label": "Deine E-Mail-Adresse", "guides.submit": "Ich möchte die Guides", "guides.invalid": "Gib eine gültige E-Mail-Adresse ein.", "guides.ready": "WhatsApp wird mit deiner Anfrage geöffnet...",
+        "contact.title": "Bereit, die Ausreden hinter dir zu lassen?", "contact.copy": "Sprich mit Gianfranco über WhatsApp, buche ein kostenloses 30-Minuten-Gespräch oder sende Prime Health eine E-Mail.",
         "footer.copy": "Prime Health von Gianfranco Stracuzzi. Gesundheits- und Gewohnheitscoaching.",
         planLabel: "Plan",
         plans: [
-          { title: "Essential", price: "150€/Monat", subtitle: "Gewinne deine Energie zurück und baue solide Gewohnheiten auf", desc: "Ideal für Menschen, die anfangen wollen, ihre Gesundheit unkompliziert zu verbessern.", featured: false, items: ["Mehr Energie im Alltag.", "Bessere Verdauung.", "Bessere Schlafqualität.", "Weniger Essensangst und Heißhungerstress.", "Nachhaltige gesunde Gewohnheiten.", "Erste Ergebnisse bei der Gewichtsabnahme."] },
-          { title: "Transformation", price: "375€/3 Monate", subtitle: "Starte deinen Stoffwechsel neu und transformiere deinen Lebensstil", desc: "Drei Monate, um eine neue Version von dir aufzubauen.", featured: true, items: ["Konstante Gewichtsabnahme.", "Mehr Kraft und Leistung.", "Automatische gesunde Routinen.", "Bessere Körperzusammensetzung.", "Mehr mentale Klarheit.", "Bessere Beziehung zum Essen.", "Mehr Disziplin und Produktivität."] },
-          { title: "Performance", price: "650€/6 Monate", subtitle: "Optimiere deinen Körper, deine Energie und deine Leistung", desc: "Für Menschen, die dauerhafte Ergebnisse und eine tiefere Transformation wollen.", featured: false, items: ["Sichtbare körperliche Transformation.", "Stabile Energie den ganzen Tag.", "Bessere Erholung.", "Höhere körperliche und mentale Leistung.", "Besserer Schlaf und bessere Regeneration.", "Volle Kontrolle über deine Gewohnheiten.", "Ein nachhaltiges gesundes Lebenssystem."] },
-          { title: "Prime Elite", price: "1000€/Jahr", subtitle: "Werde die beste Version deiner selbst", desc: "Das umfassendste Programm für Menschen, die Gesundheit, Leistung und Langlebigkeit suchen.", featured: false, items: ["Halte dein Idealgewicht ohne Besessenheit.", "Hohe Energie über das ganze Jahr.", "Automatische und nachhaltige Gewohnheiten.", "Bessere metabolische Gesundheit.", "Mehr Produktivität und Fokus.", "Körperliche und mentale Stärke.", "Ein Lebensstil, der auf Langlebigkeit ausgelegt ist.", "Werde zu jemandem, der andere durch sein Beispiel inspiriert."] }
+          { title: "Essential", duration: "1 Monat", image: "assets/founder-beach.jpg", subtitle: "Gewinne Energie zurück und baue solide Gewohnheiten auf", desc: "Ein klarer Einstieg, um deine Gesundheit ohne unnötige Komplexität zu verbessern.", featured: false, items: ["Stabilere Energie im Alltag.", "Bessere Schlafroutinen.", "Eine einfache Ernährungsstruktur.", "Gewohnheiten für dein echtes Leben."] },
+          { title: "Transformation", duration: "3 Monate", image: "assets/founder-performance.jpg", subtitle: "Transformiere deinen Lebensstil", desc: "Drei Monate für stärkere Routinen, eine bessere Beziehung zum Essen und echte Dynamik.", featured: true, items: ["Konstante Gewohnheiten für Fettverlust.", "Mehr Kraft und Leistung.", "Gewohnheiten für bessere Körperkomposition.", "Mehr Klarheit und Disziplin."] },
+          { title: "Performance", duration: "6 Monate", image: "assets/founder-hero.jpg", subtitle: "Optimiere Körper, Energie und Leistung", desc: "Für Menschen, die dauerhafte Veränderung und ein tieferes Leistungssystem suchen.", featured: false, items: ["Stabile Energie über den Tag.", "Bessere Erholungsroutinen.", "Höhere körperliche und mentale Leistung.", "Ein nachhaltiges Gesundheitssystem."] },
+          { title: "Prime Elite", duration: "12 Monate", image: "assets/founder-sunset.jpg", subtitle: "Baue deine stärkste Version auf", desc: "Das umfassendste Programm für Gesundheit, Leistung, Disziplin und langlebige Gewohnheiten.", featured: false, items: ["Coaching-Struktur für das ganze Jahr.", "Automatische und nachhaltige Gewohnheiten.", "Mehr Fokus und mentale Stärke.", "Ein Lebensstil, der Bestand hat."] }
         ]
       }
     };
 
-    const defaultLang = "en";
+    const defaultLang = "es";
+    const whatsappNumber = "393533233841";
+    const whatsappMessage = "Hola Gianfranco, estoy listo para dejar las excusas atrás y empezar a construir mi mejor versión contigo.";
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+    let currentLang = defaultLang;
     const plansGrid = document.querySelector("#plansGrid");
     const languageButtons = document.querySelectorAll(".lang-btn");
     const scrollProgress = document.querySelector("#scrollProgress");
+    const guideForm = document.querySelector("#guideForm");
+    const guideEmail = document.querySelector("#guideEmail");
+    const guideStatus = document.querySelector("#guideStatus");
     const canUseMotion = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    document.querySelectorAll(".whatsapp-link").forEach((link) => { link.href = whatsappUrl; });
 
     function renderPlans(lang) {
       plansGrid.innerHTML = translations[lang].plans.map((plan) => `
         <article class="plan-card reveal ${plan.featured ? "featured" : ""}">
+          <img class="plan-image" src="${plan.image}" alt="" loading="lazy">
           <span class="tag">${translations[lang].planLabel}</span>
           <h3 class="plan-title">${plan.title}</h3>
-          <div class="plan-price">${plan.price}</div>
+          <div class="plan-duration">${plan.duration}</div>
           <p class="plan-subtitle">${plan.subtitle}</p>
           <p class="plan-description">${plan.desc}</p>
           <ul class="plan-list">
             ${plan.items.map((item) => `<li>${item}</li>`).join("")}
           </ul>
+          <div class="plan-actions">
+            <a class="button whatsapp-link" href="${whatsappUrl}" target="_blank" rel="noreferrer">${translations[lang]["cta.whatsapp"]}</a>
+            <a class="plan-call" href="https://calendly.com/gstracuzzi1213/30min" target="_blank" rel="noreferrer">${translations[lang]["cta.call"]}</a>
+          </div>
         </article>
       `).join("");
       observeRevealItems();
@@ -1062,11 +1216,25 @@
         button.classList.toggle("active", isActive);
         button.setAttribute("aria-pressed", String(isActive));
       });
-      localStorage.setItem("primeHealthLanguage", activeLang);
+      localStorage.setItem("primeHealthLanguageV2", activeLang);
+      currentLang = activeLang;
     }
 
     languageButtons.forEach((button) => {
       button.addEventListener("click", () => setLanguage(button.dataset.lang));
+    });
+
+    guideForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const email = guideEmail.value.trim();
+      if (!guideEmail.checkValidity()) {
+        guideStatus.textContent = translations[currentLang]["guides.invalid"];
+        guideEmail.focus();
+        return;
+      }
+      guideStatus.textContent = translations[currentLang]["guides.ready"];
+      const guideMessage = `Hola Gianfranco, quiero recibir las guías de Prime Health. Mi correo es: ${email}`;
+      window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(guideMessage)}`, "_blank", "noopener,noreferrer");
     });
 
     let revealObserver;
@@ -1137,7 +1305,7 @@
     window.addEventListener("scroll", updateScrollProgress, { passive: true });
     window.addEventListener("resize", updateScrollProgress);
 
-    setLanguage(localStorage.getItem("primeHealthLanguage") || defaultLang);
+    setLanguage(localStorage.getItem("primeHealthLanguageV2") || defaultLang);
     observeRevealItems();
     setupMotionTracking();
     updateScrollProgress();

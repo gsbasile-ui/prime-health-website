@@ -2,6 +2,15 @@
 
 Static website for Prime Health, a health and habits coaching brand by Gianfranco Stracuzzi.
 
+## Production Deployment
+
+- Public URL: https://prime-health.vercel.app
+- Vercel project: `giancarlo-soto-s-projects/prime-health`
+- Git source: `gsbasile-ui/prime-health-website`
+- Production branch: `main`
+- Deployment: automatic through the Vercel Git integration on every push to `main`.
+- GitHub Pages is disabled; GitHub remains the source repository only.
+
 ## Source Evidence
 
 Public Instagram metadata verified on June 13, 2026:
@@ -17,6 +26,7 @@ Public Instagram metadata verified on June 13, 2026:
 - `assets/founder-field.jpg` - approved founder photo for hero/founder visuals.
 - `assets/founder-sky.jpg` - approved founder photo for founder story visuals.
 - `vercel.json` - static deployment config.
+- `.gitignore` - excludes local Vercel metadata and environment files.
 
 ## Notes
 
@@ -27,7 +37,7 @@ Public Instagram metadata verified on June 13, 2026:
 
 ## Personalized Client Guides
 
-- Sandro Rodriguez: `https://gsbasile-ui.github.io/prime-health-website/sandro-rodriguez/`
+- Sandro Rodriguez: `https://prime-health.vercel.app/sandro-rodriguez`
 - The Sandro guide is public by direct URL but is intentionally omitted from the marketing-site navigation.
 - Product links open Walmart in a new tab. Product availability, price, pickup, and delivery depend on the shopper's location.
 - The guide footer carries the official VTS mark and a linked `Powered by Visionary Technologies Systems` credit.

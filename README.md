@@ -9,6 +9,7 @@ Static website for Prime Health, a health and habits coaching brand by Gianfranc
 - Git source: `gsbasile-ui/prime-health-website`
 - Production branch: `main`
 - Deployment: automatic through the Vercel Git integration on every push to `main`.
+- Domain assignment: verified Vercel production domain attached directly to the project.
 - GitHub Pages is disabled; GitHub remains the source repository only.
 
 ## Source Evidence

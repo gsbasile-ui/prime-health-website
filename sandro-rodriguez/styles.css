@@ -423,7 +423,7 @@ footer { padding: 35px 0; color: var(--white); background: #102b21; }
   .header-inner { height: 70px; }
   .brand img { width: 42px; height: 42px; }
   .brand small { display: none; }
-  .client-chip { padding: 7px 10px; font-size: 10px; }
+  .client-chip { display: none; }
   .section-nav { min-height: 48px; }
   .nav-item { padding: 7px 11px; font-size: 11px; }
   .hero { min-height: 0; }

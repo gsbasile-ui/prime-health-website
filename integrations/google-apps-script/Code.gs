@@ -4,21 +4,28 @@ const SPREADSHEET_TITLE = "Prime Health Website Leads";
 
 function setup() {
   const properties = PropertiesService.getScriptProperties();
-  if (!properties.getProperty("PRIME_HEALTH_LEADS_SECRET")) {
-    throw new Error("Add PRIME_HEALTH_LEADS_SECRET in Script properties before running setup.");
+  let secret = properties.getProperty("PRIME_HEALTH_LEADS_SECRET");
+  if (!secret) {
+    secret = (Utilities.getUuid() + Utilities.getUuid()).replace(/-/g, "");
+    properties.setProperty("PRIME_HEALTH_LEADS_SECRET", secret);
   }
 
-  if (!properties.getProperty("LEAD_SPREADSHEET_ID")) {
+  let spreadsheetId = properties.getProperty("LEAD_SPREADSHEET_ID");
+  if (!spreadsheetId) {
     const spreadsheet = SpreadsheetApp.create(SPREADSHEET_TITLE);
     const sheet = spreadsheet.getSheets()[0];
     sheet.setName(SHEET_NAME);
     sheet.appendRow(["Fecha", "Nombre", "Correo", "Teléfono", "Idioma", "Fuente", "ID", "Consentimiento"]);
     sheet.setFrozenRows(1);
-    properties.setProperty("LEAD_SPREADSHEET_ID", spreadsheet.getId());
+    spreadsheetId = spreadsheet.getId();
+    properties.setProperty("LEAD_SPREADSHEET_ID", spreadsheetId);
   }
 
-  People.People.get("people/me", { personFields: "names" });
-  console.log("Setup complete. Remaining email quota: " + MailApp.getRemainingDailyQuota());
+  return {
+    secret: secret,
+    spreadsheetUrl: SpreadsheetApp.openById(spreadsheetId).getUrl(),
+    remainingEmailQuota: MailApp.getRemainingDailyQuota()
+  };
 }
 
 function doPost(event) {

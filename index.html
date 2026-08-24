@@ -641,9 +641,12 @@
       box-shadow: var(--shadow);
     }
     .guides-panel p { margin-top: 14px; color: var(--muted); font-size: 17px; }
-    .guide-form { display: grid; gap: 12px; }
+    .guide-form { display: grid; gap: 14px; }
+    .guide-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .form-field { display: grid; gap: 7px; }
+    .form-field:first-child { grid-column: 1 / -1; }
     .guide-form label { color: var(--green-dark); font-size: 13px; font-weight: 900; }
-    .guide-form input {
+    .guide-form input:not([type="checkbox"]) {
       width: 100%;
       min-height: 50px;
       padding: 12px 15px;
@@ -654,7 +657,12 @@
       font: inherit;
     }
     .guide-form input:focus { outline: 3px solid rgba(186, 219, 116, 0.42); border-color: var(--green); }
+    .consent-row { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 10px; align-items: start; line-height: 1.45; }
+    .consent-row input { width: 18px; height: 18px; margin-top: 1px; accent-color: var(--green); }
+    .form-trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+    .guide-form .button:disabled { cursor: wait; opacity: 0.68; transform: none; box-shadow: none; }
     .form-status { min-height: 20px; color: var(--green-dark); font-size: 12px; font-weight: 800; }
+    .form-status[data-state="error"] { color: #9a3428; }
 
     footer { padding: 24px 0 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
     .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
@@ -753,6 +761,8 @@
       .plans-grid, .founder-gallery, .story-gallery, .results-grid { grid-template-columns: 1fr; }
       .plan-card.featured { transform: none; }
       .process-item { grid-template-columns: 1fr; }
+      .guide-fields { grid-template-columns: 1fr; }
+      .form-field:first-child { grid-column: auto; }
       .footer-inner { align-items: flex-start; flex-direction: column; }
       .footer-links { flex-wrap: wrap; }
     }
@@ -881,12 +891,32 @@
           <div>
             <span class="kicker" data-i18n="guides.kicker">Recursos gratuitos</span>
             <h2 id="guides-title" data-i18n="guides.title">¿Quieres las guías de Prime Health?</h2>
-            <p data-i18n="guides.copy">Déjanos tu correo y abre WhatsApp para solicitar las guías directamente a Gianfranco.</p>
+            <p data-i18n="guides.copy">Completa tus datos para recibir las guías y que Gianfranco pueda ponerse en contacto contigo.</p>
           </div>
-          <form class="guide-form" id="guideForm">
-            <label for="guideEmail" data-i18n="guides.label">Tu correo electrónico</label>
-            <input id="guideEmail" name="email" type="email" autocomplete="email" required placeholder="tu@email.com">
-            <button class="button" type="submit" data-i18n="guides.submit">Quiero las guías</button>
+          <form class="guide-form" id="guideForm" novalidate>
+            <div class="guide-fields">
+              <div class="form-field">
+                <label for="guideName" data-i18n="guides.name">Nombre completo</label>
+                <input id="guideName" name="name" type="text" autocomplete="name" required minlength="2" maxlength="80" placeholder="Tu nombre" data-i18n-placeholder="guides.namePlaceholder">
+              </div>
+              <div class="form-field">
+                <label for="guideEmail" data-i18n="guides.email">Correo electrónico</label>
+                <input id="guideEmail" name="email" type="email" autocomplete="email" required maxlength="160" placeholder="tu@email.com" data-i18n-placeholder="guides.emailPlaceholder">
+              </div>
+              <div class="form-field">
+                <label for="guidePhone" data-i18n="guides.phone">Número de teléfono</label>
+                <input id="guidePhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required minlength="7" maxlength="24" placeholder="+39 123 456 7890" data-i18n-placeholder="guides.phonePlaceholder">
+              </div>
+            </div>
+            <label class="consent-row" for="guideConsent">
+              <input id="guideConsent" name="consent" type="checkbox" required>
+              <span data-i18n="guides.consent">Acepto que Prime Health use estos datos para enviarme las guías y contactarme sobre sus servicios.</span>
+            </label>
+            <div class="form-trap" aria-hidden="true">
+              <label for="guideWebsite">Website</label>
+              <input id="guideWebsite" name="website" type="text" tabindex="-1" autocomplete="off">
+            </div>
+            <button class="button" id="guideSubmit" type="submit" data-i18n="guides.submit">Quiero las guías</button>
             <p class="form-status" id="guideStatus" role="status" aria-live="polite"></p>
           </form>
         </div>
@@ -991,7 +1021,9 @@
         "process.step2.title": "Simplify the food plan.", "process.step2.copy": "Focus on real-food choices that reduce friction and make progress easier to repeat.",
         "process.step3.title": "Improve the routines around sleep and energy.", "process.step3.copy": "Build small daily rhythms that support better recovery, steadier energy, and healthier decisions.",
         "process.step4.title": "Track what is working.", "process.step4.copy": "Keep the process honest by looking at consistency, behavior, and how the client feels over time.",
-        "guides.kicker": "Free resources", "guides.title": "Would you like the Prime Health guides?", "guides.copy": "Leave your email and open WhatsApp to request the guides directly from Gianfranco.", "guides.label": "Your email address", "guides.submit": "I want the guides", "guides.invalid": "Enter a valid email address.", "guides.ready": "Opening WhatsApp with your request...",
+        "guides.kicker": "Free resources", "guides.title": "Would you like the Prime Health guides?", "guides.copy": "Complete your details to receive the guides and let Gianfranco contact you.",
+        "guides.name": "Full name", "guides.namePlaceholder": "Your name", "guides.email": "Email address", "guides.emailPlaceholder": "you@email.com", "guides.phone": "Phone number", "guides.phonePlaceholder": "+39 123 456 7890",
+        "guides.consent": "I agree that Prime Health may use these details to send me the guides and contact me about its services.", "guides.submit": "I want the guides", "guides.submitting": "Sending...", "guides.invalid": "Complete your name, a valid email, phone number, and consent.", "guides.success": "Thank you. Your request was sent to Gianfranco and your contact was saved.", "guides.error": "We could not send your request. Please try again or contact Gianfranco on WhatsApp.",
         "contact.title": "Ready to leave the excuses behind?", "contact.copy": "Talk to Gianfranco on WhatsApp, book a free 30-minute call, or send Prime Health an email.",
         "footer.copy": "Prime Health by Gianfranco Stracuzzi. Health & habits coaching.",
         planLabel: "Plan",
@@ -1026,7 +1058,9 @@
         "process.step2.title": "Simplifica el plan de comida.", "process.step2.copy": "Enfócate en decisiones de comida real que reduzcan fricción y hagan el progreso más fácil de repetir.",
         "process.step3.title": "Mejora las rutinas de sueño y energía.", "process.step3.copy": "Construye pequeños ritmos diarios que apoyen mejor recuperación, energía más estable y decisiones más saludables.",
         "process.step4.title": "Mide lo que funciona.", "process.step4.copy": "Mantén el proceso honesto mirando constancia, comportamiento y cómo se siente el cliente con el tiempo.",
-        "guides.kicker": "Recursos gratuitos", "guides.title": "¿Quieres las guías de Prime Health?", "guides.copy": "Déjanos tu correo y abre WhatsApp para solicitar las guías directamente a Gianfranco.", "guides.label": "Tu correo electrónico", "guides.submit": "Quiero las guías", "guides.invalid": "Introduce un correo válido.", "guides.ready": "Abriendo WhatsApp con tu solicitud...",
+        "guides.kicker": "Recursos gratuitos", "guides.title": "¿Quieres las guías de Prime Health?", "guides.copy": "Completa tus datos para recibir las guías y que Gianfranco pueda ponerse en contacto contigo.",
+        "guides.name": "Nombre completo", "guides.namePlaceholder": "Tu nombre", "guides.email": "Correo electrónico", "guides.emailPlaceholder": "tu@email.com", "guides.phone": "Número de teléfono", "guides.phonePlaceholder": "+39 123 456 7890",
+        "guides.consent": "Acepto que Prime Health use estos datos para enviarme las guías y contactarme sobre sus servicios.", "guides.submit": "Quiero las guías", "guides.submitting": "Enviando...", "guides.invalid": "Completa tu nombre, un correo válido, teléfono y consentimiento.", "guides.success": "Gracias. Tu solicitud llegó a Gianfranco y tu contacto quedó guardado.", "guides.error": "No pudimos enviar tu solicitud. Inténtalo otra vez o contacta a Gianfranco por WhatsApp.",
         "contact.title": "¿Listo para dejar las excusas atrás?", "contact.copy": "Habla con Gianfranco por WhatsApp, reserva una llamada gratuita de 30 minutos o envía un correo a Prime Health.",
         "footer.copy": "Prime Health por Gianfranco Stracuzzi. Coaching de salud y hábitos.",
         planLabel: "Plan",
@@ -1061,7 +1095,9 @@
         "process.step2.title": "Vereinfache deinen Ernährungsplan.", "process.step2.copy": "Konzentriere dich auf echte Lebensmittel und Entscheidungen, die Reibung reduzieren und Fortschritt leichter wiederholbar machen.",
         "process.step3.title": "Verbessere Routinen rund um Schlaf und Energie.", "process.step3.copy": "Baue kleine tägliche Rhythmen auf, die bessere Erholung, stabilere Energie und gesündere Entscheidungen unterstützen.",
         "process.step4.title": "Verfolge, was funktioniert.", "process.step4.copy": "Halte den Prozess ehrlich, indem du Konstanz, Verhalten und das Körpergefühl über Zeit betrachtest.",
-        "guides.kicker": "Kostenlose Ressourcen", "guides.title": "Möchtest du die Prime Health Guides?", "guides.copy": "Hinterlasse deine E-Mail und öffne WhatsApp, um die Guides direkt bei Gianfranco anzufordern.", "guides.label": "Deine E-Mail-Adresse", "guides.submit": "Ich möchte die Guides", "guides.invalid": "Gib eine gültige E-Mail-Adresse ein.", "guides.ready": "WhatsApp wird mit deiner Anfrage geöffnet...",
+        "guides.kicker": "Kostenlose Ressourcen", "guides.title": "Möchtest du die Prime Health Guides?", "guides.copy": "Fülle deine Kontaktdaten aus, um die Guides zu erhalten und von Gianfranco kontaktiert zu werden.",
+        "guides.name": "Vollständiger Name", "guides.namePlaceholder": "Dein Name", "guides.email": "E-Mail-Adresse", "guides.emailPlaceholder": "du@email.com", "guides.phone": "Telefonnummer", "guides.phonePlaceholder": "+39 123 456 7890",
+        "guides.consent": "Ich stimme zu, dass Prime Health diese Angaben verwendet, um mir die Guides zu senden und mich zu seinen Angeboten zu kontaktieren.", "guides.submit": "Ich möchte die Guides", "guides.submitting": "Wird gesendet...", "guides.invalid": "Vervollständige Name, gültige E-Mail-Adresse, Telefonnummer und Zustimmung.", "guides.success": "Danke. Deine Anfrage wurde an Gianfranco gesendet und dein Kontakt gespeichert.", "guides.error": "Deine Anfrage konnte nicht gesendet werden. Versuche es erneut oder kontaktiere Gianfranco über WhatsApp.",
         "contact.title": "Bereit, die Ausreden hinter dir zu lassen?", "contact.copy": "Sprich mit Gianfranco über WhatsApp, buche ein kostenloses 30-Minuten-Gespräch oder sende Prime Health eine E-Mail.",
         "footer.copy": "Prime Health von Gianfranco Stracuzzi. Gesundheits- und Gewohnheitscoaching.",
         planLabel: "Plan",
@@ -1083,9 +1119,15 @@
     const languageButtons = document.querySelectorAll(".lang-btn");
     const scrollProgress = document.querySelector("#scrollProgress");
     const guideForm = document.querySelector("#guideForm");
+    const guideName = document.querySelector("#guideName");
     const guideEmail = document.querySelector("#guideEmail");
+    const guidePhone = document.querySelector("#guidePhone");
+    const guideConsent = document.querySelector("#guideConsent");
+    const guideWebsite = document.querySelector("#guideWebsite");
+    const guideSubmit = document.querySelector("#guideSubmit");
     const guideStatus = document.querySelector("#guideStatus");
     const canUseMotion = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    guideForm.dataset.startedAt = String(Date.now());
 
     document.querySelectorAll(".whatsapp-link").forEach((link) => { link.href = whatsappUrl; });
 
@@ -1117,6 +1159,10 @@
         const key = node.dataset.i18n;
         if (translations[activeLang][key]) node.textContent = translations[activeLang][key];
       });
+      document.querySelectorAll("[data-i18n-placeholder]").forEach((node) => {
+        const key = node.dataset.i18nPlaceholder;
+        if (translations[activeLang][key]) node.placeholder = translations[activeLang][key];
+      });
       renderPlans(activeLang);
       languageButtons.forEach((button) => {
         const isActive = button.dataset.lang === activeLang;
@@ -1131,17 +1177,53 @@
       button.addEventListener("click", () => setLanguage(button.dataset.lang));
     });
 
-    guideForm.addEventListener("submit", (event) => {
+    guideForm.addEventListener("submit", async (event) => {
       event.preventDefault();
+      const name = guideName.value.trim();
       const email = guideEmail.value.trim();
-      if (!guideEmail.checkValidity()) {
+      const phone = guidePhone.value.trim();
+      if (!guideForm.checkValidity()) {
         guideStatus.textContent = translations[currentLang]["guides.invalid"];
-        guideEmail.focus();
+        guideStatus.dataset.state = "error";
+        const invalidField = guideForm.querySelector(":invalid");
+        if (invalidField) invalidField.focus();
         return;
       }
-      guideStatus.textContent = translations[currentLang]["guides.ready"];
-      const guideMessage = `Hola Gianfranco, quiero recibir las guías de Prime Health. Mi correo es: ${email}`;
-      window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(guideMessage)}`, "_blank", "noopener,noreferrer");
+
+      guideSubmit.disabled = true;
+      guideForm.setAttribute("aria-busy", "true");
+      guideStatus.textContent = translations[currentLang]["guides.submitting"];
+      guideStatus.dataset.state = "pending";
+      guideSubmit.textContent = translations[currentLang]["guides.submitting"];
+
+      try {
+        const response = await fetch("/api/leads", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name,
+            email,
+            phone,
+            consent: guideConsent.checked,
+            website: guideWebsite.value,
+            language: currentLang,
+            startedAt: Number(guideForm.dataset.startedAt)
+          })
+        });
+        if (!response.ok) throw new Error("Lead request failed");
+
+        guideStatus.textContent = translations[currentLang]["guides.success"];
+        guideStatus.dataset.state = "success";
+        guideForm.reset();
+        guideForm.dataset.startedAt = String(Date.now());
+      } catch (error) {
+        guideStatus.textContent = translations[currentLang]["guides.error"];
+        guideStatus.dataset.state = "error";
+      } finally {
+        guideSubmit.disabled = false;
+        guideForm.removeAttribute("aria-busy");
+        guideSubmit.textContent = translations[currentLang]["guides.submit"];
+      }
     });
 
     let revealObserver;

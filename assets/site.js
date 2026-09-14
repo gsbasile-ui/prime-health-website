@@ -107,7 +107,7 @@
           <a href="/gianfranco/" data-transition-link data-i18n="nav.gianfranco"></a>
           <a href="/recursos/" data-transition-link data-i18n="nav.resources"></a>
           <a href="/privacidad/" data-transition-link data-i18n="footer.privacy"></a>
-          <a href="https://www.instagram.com/prime_health_co/" target="_blank" rel="noopener noreferrer" data-i18n="footer.instagram"></a>
+          <a href="https://www.instagram.com/gian.health/" target="_blank" rel="noopener noreferrer" data-i18n="footer.instagram"></a>
         </div>
       </div>
       <div class="vts-credit">

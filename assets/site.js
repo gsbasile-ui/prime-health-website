@@ -210,7 +210,6 @@
         const id = detail.dataset.programDetail;
         history.replaceState(null, "", `#${id}`);
         highlightProgram(id);
-        track("Program viewed", { program: id });
       });
     });
   }
@@ -362,20 +361,6 @@
     });
   }
 
-  function track(name, data = {}) {
-    if (typeof window.va !== "function") return;
-    window.va("event", { name, data });
-  }
-
-  function setupTrackedLinks() {
-    document.addEventListener("click", (event) => {
-      const whatsapp = event.target.closest(".whatsapp-link");
-      const calendly = event.target.closest(".calendly-link");
-      if (whatsapp) track("WhatsApp clicked", { program: whatsapp.dataset.program || selectedProgramFromUrl() });
-      if (calendly) track("Calendly clicked", { program: calendly.dataset.program || selectedProgramFromUrl() });
-    });
-  }
-
   function setupLeadForm() {
     const form = document.querySelector("#guideForm");
     if (!form) return;
@@ -415,7 +400,6 @@
         if (!response.ok) throw new Error("Lead request failed");
         status.textContent = t("form.success");
         status.dataset.state = "success";
-        track("Guide request sent", { program: payload.program });
         form.reset();
         renderProgramOptions();
         form.dataset.startedAt = String(Date.now());
@@ -438,6 +422,5 @@
   setupImageMotion();
   setupScrollProgress();
   setupPageTransitions();
-  setupTrackedLinks();
   setupLeadForm();
 })();

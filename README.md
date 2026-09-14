@@ -47,7 +47,7 @@ Public Instagram metadata verified on June 13, 2026:
 - No medical or clinical claims are made.
 - Sales CTAs route to WhatsApp or the free 30-minute Calendly consultation; prices are intentionally not published.
 - Prime Health coaching is presented as educational and habit-based, not medical advice, diagnosis, or treatment.
-- Cookie-free Vercel Web Analytics records page views. Custom interaction events are queued only when the project's Vercel plan accepts them.
+- Cookie-free Vercel Web Analytics records page views. The Hobby plan does not support custom events, so program interest is measured through the field stored with each lead.
 
 ## Lead Capture
 

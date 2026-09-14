@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Solicita las guías de Prime Health o contacta a Gianfranco por WhatsApp, Calendly o correo.">
+  <meta property="og:title" content="Recursos y contacto | Prime Health">
+  <meta property="og:description" content="Solicita las guías y conversa con Gianfranco sobre tu próximo paso.">
+  <meta property="og:image" content="https://prime-health-co.vercel.app/assets/founder-beach.jpg">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://prime-health-co.vercel.app/recursos/">
+  <title>Recursos y contacto | Prime Health</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=Libre+Baskerville:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body data-page="resources">
+  <header id="siteHeader"></header>
+  <main id="main">
+    <section class="page-hero">
+      <div class="shell page-hero-grid">
+        <div class="reveal from-left">
+          <span class="eyebrow" data-i18n="resources.kicker">Recursos y contacto</span>
+          <h1 data-i18n="resources.title">Empieza con una conversación clara.</h1>
+          <p class="lede" data-i18n="resources.intro">Solicita las guías de Prime Health, cuéntale a Gianfranco qué quieres cambiar o reserva una llamada gratuita de 30 minutos.</p>
+          <div class="actions"><a class="button light whatsapp-link" href="#" target="_blank" rel="noopener noreferrer" data-i18n="cta.whatsapp">Hablar con Gianfranco</a><a class="button light-outline calendly-link" href="#" target="_blank" rel="noopener noreferrer" data-i18n="cta.call">Reservar llamada gratuita</a></div>
+        </div>
+        <div class="page-hero-image reveal from-right" data-motion-image><img src="/assets/founder-beach.jpg" alt="Gianfranco con un balón frente al mar" loading="eager"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell resource-grid">
+        <div class="reveal from-left">
+          <span class="eyebrow" data-i18n="resources.guidesKicker">Guías Prime Health</span>
+          <h2 data-i18n="resources.guidesTitle">Solicita recursos para dar tu primer paso.</h2>
+          <p class="lede" data-i18n="resources.guidesText">Completa tus datos. Gianfranco recibirá tu solicitud, guardará tu contacto y hará seguimiento personalmente para enviarte las guías adecuadas.</p>
+          <div class="contact-stack" style="margin-top: 34px;">
+            <a class="contact-option whatsapp-link" href="#" target="_blank" rel="noopener noreferrer"><span class="contact-icon">W</span><span><h3 data-i18n="resources.whatsappTitle">WhatsApp</h3><p data-i18n="resources.whatsappText">Cuéntale a Gianfranco qué quieres cambiar y qué te está frenando.</p></span><span class="contact-arrow">→</span></a>
+            <a class="contact-option calendly-link" href="#" target="_blank" rel="noopener noreferrer"><span class="contact-icon">30</span><span><h3 data-i18n="resources.callTitle">Llamada gratuita</h3><p data-i18n="resources.callText">Reserva 30 minutos para entender tu punto de partida y el programa adecuado.</p></span><span class="contact-arrow">→</span></a>
+            <a class="contact-option" href="mailto:primexhealthgs@gmail.com"><span class="contact-icon">@</span><span><h3 data-i18n="resources.emailTitle">Correo</h3><p data-i18n="resources.emailText">Escribe directamente a primexhealthgs@gmail.com.</p></span><span class="contact-arrow">→</span></a>
+          </div>
+        </div>
+
+        <form class="guide-form reveal from-right" id="guideForm" novalidate>
+          <div class="field"><label for="guideName" data-i18n="form.name">Nombre completo</label><input id="guideName" name="name" type="text" autocomplete="name" minlength="2" maxlength="80" required data-i18n-placeholder="form.namePlaceholder" placeholder="Tu nombre"></div>
+          <div class="form-row">
+            <div class="field"><label for="guideEmail" data-i18n="form.email">Correo electrónico</label><input id="guideEmail" name="email" type="email" autocomplete="email" maxlength="160" required data-i18n-placeholder="form.emailPlaceholder" placeholder="tu@email.com"></div>
+            <div class="field"><label for="guidePhone" data-i18n="form.phone">Número de teléfono</label><input id="guidePhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" minlength="7" maxlength="24" required data-i18n-placeholder="form.phonePlaceholder" placeholder="+39 123 456 7890"></div>
+          </div>
+          <div class="field"><label for="guideProgram" data-i18n="form.program">Programa de interés</label><select id="guideProgram" name="program"></select></div>
+          <label class="form-trap" for="guideWebsite">Website<input id="guideWebsite" name="website" type="text" tabindex="-1" autocomplete="off"></label>
+          <label class="consent" for="guideConsent"><input id="guideConsent" name="consent" type="checkbox" required><span><span data-i18n="form.consentPrefix">Acepto que Prime Health use estos datos para responder a mi solicitud y contactarme sobre sus servicios. He leído el</span> <a href="/privacidad/" data-transition-link data-i18n="form.privacy">aviso de privacidad</a>.</span></label>
+          <button class="button" id="guideSubmit" type="submit" data-i18n="form.submit">Solicitar las guías</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="section band-mint">
+      <div class="narrow">
+        <div class="section-heading reveal"><div><span class="eyebrow" data-i18n="resources.faqKicker">Respuestas rápidas</span><h2 data-i18n="resources.faqTitle">Antes de contactar</h2></div></div>
+        <div class="faq-list" id="faqList"></div>
+      </div>
+    </section>
+  </main>
+  <footer id="siteFooter"></footer>
+  <script src="/assets/content.js"></script>
+  <script src="/assets/site.js"></script>
+  <script>window.va = window.va || function(){(window.vaq = window.vaq || []).push(arguments);};</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

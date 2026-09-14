@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Compara Essential, Transformation, Performance y Prime Elite para elegir el acompañamiento de hábitos adecuado.">
+  <meta property="og:title" content="Programas Prime Health">
+  <meta property="og:description" content="Compara cuatro niveles de acompañamiento y conoce cada programa en detalle.">
+  <meta property="og:image" content="https://prime-health-co.vercel.app/assets/founder-performance.jpg">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://prime-health-co.vercel.app/programas/">
+  <title>Programas | Prime Health</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=Libre+Baskerville:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body data-page="programs">
+  <header id="siteHeader"></header>
+  <main id="main">
+    <section class="page-hero">
+      <div class="shell page-hero-grid">
+        <div class="reveal from-left">
+          <span class="eyebrow" data-i18n="programs.kicker">Elige con claridad</span>
+          <h1 data-i18n="programs.title">Cuatro programas. Una progresión diseñada para durar.</h1>
+          <p class="lede" data-i18n="programs.intro">Compara el nivel de acompañamiento y abre cada programa para entender para quién es, qué trabaja y qué te llevas.</p>
+          <div class="actions">
+            <a class="button light whatsapp-link" href="#" target="_blank" rel="noopener noreferrer" data-i18n="cta.whatsapp">Hablar con Gianfranco</a>
+            <a class="button light-outline calendly-link" href="#" target="_blank" rel="noopener noreferrer" data-i18n="cta.call">Reservar llamada gratuita</a>
+          </div>
+        </div>
+        <div class="page-hero-image reveal from-right" data-motion-image><img src="/assets/founder-performance.jpg" alt="Gianfranco entrenando en el campo" loading="eager"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div><span class="eyebrow" data-i18n="programs.compareKicker">Comparación completa</span><h2 data-i18n="programs.compareTitle">Encuentra el nivel de apoyo que encaja contigo.</h2></div>
+          <p data-i18n="programs.compareHint">Selecciona una columna para destacar un programa. En móvil, desliza la tabla horizontalmente.</p>
+        </div>
+        <div class="program-selector" id="programSelector" aria-label="Select a program"></div>
+        <div class="comparison-wrap reveal" role="region" aria-label="Prime Health program comparison" tabindex="0">
+          <table class="comparison-table" id="comparisonTable"></table>
+        </div>
+        <p class="comparison-hint" data-i18n="programs.compareHint">Selecciona una columna para destacar un programa. En móvil, desliza la tabla horizontalmente.</p>
+        <p class="disclaimer" data-i18n="programs.disclaimer">Prime Health ofrece coaching educativo basado en hábitos. No sustituye atención médica, diagnóstico ni tratamiento.</p>
+      </div>
+    </section>
+
+    <section class="section band-paper">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div><span class="eyebrow" data-i18n="programs.detailsKicker">Conoce cada programa</span><h2 data-i18n="programs.detailsTitle">Más contexto antes de decidir.</h2></div>
+        </div>
+        <div class="program-details" id="programDetails"></div>
+      </div>
+    </section>
+
+    <section class="section band-dark">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div><span class="eyebrow" data-i18n="programs.processKicker">Cómo funciona</span><h2 data-i18n="programs.processTitle">Una estructura clara, adaptada a tu realidad.</h2></div>
+        </div>
+        <div class="process-grid">
+          <article class="process-card reveal"><span>01</span><h3 data-i18n="programs.step1">Evaluar</h3><p data-i18n="programs.step1Text">Entender tu punto de partida, contexto y prioridades.</p></article>
+          <article class="process-card reveal"><span>02</span><h3 data-i18n="programs.step2">Simplificar</h3><p data-i18n="programs.step2Text">Convertir objetivos amplios en acciones repetibles.</p></article>
+          <article class="process-card reveal"><span>03</span><h3 data-i18n="programs.step3">Acompañar</h3><p data-i18n="programs.step3Text">Usar seguimiento y conversación para sostener el proceso.</p></article>
+          <article class="process-card reveal"><span>04</span><h3 data-i18n="programs.step4">Ajustar</h3><p data-i18n="programs.step4Text">Revisar lo que funciona y adaptar lo que crea fricción.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="narrow">
+        <div class="section-heading reveal"><div><span class="eyebrow" data-i18n="programs.faqKicker">Antes de empezar</span><h2 data-i18n="programs.faqTitle">Preguntas frecuentes</h2></div></div>
+        <div class="faq-list" id="faqList"></div>
+      </div>
+    </section>
+
+    <section class="section-sm band-mint">
+      <div class="shell cta-band reveal">
+        <div><span class="eyebrow" data-i18n="home.guidesKicker">Primer paso</span><h2 data-i18n="home.guidesTitle">Solicita las guías y empieza con claridad.</h2><p data-i18n="home.guidesText">Déjanos tus datos. Gianfranco recibirá tu solicitud y se pondrá en contacto contigo para enviarte los recursos adecuados.</p></div>
+        <div class="actions"><a class="button light" href="/recursos/" data-transition-link data-i18n="cta.resources">Solicitar las guías</a></div>
+      </div>
+    </section>
+  </main>
+  <footer id="siteFooter"></footer>
+  <script src="/assets/content.js"></script>
+  <script src="/assets/site.js"></script>
+  <script>window.va = window.va || function(){(window.vaq = window.vaq || []).push(arguments);};</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

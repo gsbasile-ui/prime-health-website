@@ -1,6 +1,8 @@
 const CONTACT_EMAIL = "primexhealthgs@gmail.com";
 const SHEET_NAME = "Website Leads";
 const SPREADSHEET_TITLE = "Prime Health Website Leads";
+const LEAD_HEADERS = ["Fecha", "Nombre", "Correo", "Teléfono", "Idioma", "Fuente", "ID", "Consentimiento", "Programa"];
+const PROGRAMS = ["essential", "transformation", "performance", "prime-elite", "general"];
 
 function setup() {
   const properties = PropertiesService.getScriptProperties();
@@ -15,11 +17,13 @@ function setup() {
     const spreadsheet = SpreadsheetApp.create(SPREADSHEET_TITLE);
     const sheet = spreadsheet.getSheets()[0];
     sheet.setName(SHEET_NAME);
-    sheet.appendRow(["Fecha", "Nombre", "Correo", "Teléfono", "Idioma", "Fuente", "ID", "Consentimiento"]);
-    sheet.setFrozenRows(1);
+    ensureHeaders_(sheet);
     spreadsheetId = spreadsheet.getId();
     properties.setProperty("LEAD_SPREADSHEET_ID", spreadsheetId);
   }
+
+  const existingSheet = SpreadsheetApp.openById(spreadsheetId).getSheetByName(SHEET_NAME);
+  if (existingSheet) ensureHeaders_(existingSheet);
 
   return {
     secret: secret,
@@ -58,9 +62,10 @@ function validateLead_(data) {
     name: clean_(data.name, 80),
     email: clean_(data.email, 160).toLowerCase(),
     phone: clean_(data.phone, 24),
+    program: clean_(data.program, 24) || "general",
     consent: data.consent === true
   };
-  if (!lead.submissionId || !lead.name || !lead.email || !lead.phone || !lead.consent) {
+  if (!lead.submissionId || !lead.name || !lead.email || !lead.phone || !lead.consent || PROGRAMS.indexOf(lead.program) === -1) {
     throw new Error("Invalid lead payload");
   }
   return lead;
@@ -79,10 +84,7 @@ function appendLead_(lead) {
 
   let sheet = spreadsheet.getSheetByName(SHEET_NAME);
   if (!sheet) sheet = spreadsheet.insertSheet(SHEET_NAME);
-  if (sheet.getLastRow() === 0) {
-    sheet.appendRow(["Fecha", "Nombre", "Correo", "Teléfono", "Idioma", "Fuente", "ID", "Consentimiento"]);
-    sheet.setFrozenRows(1);
-  }
+  ensureHeaders_(sheet);
   sheet.appendRow([
     lead.submittedAt || new Date().toISOString(),
     lead.name,
@@ -91,8 +93,25 @@ function appendLead_(lead) {
     lead.language,
     lead.source,
     lead.submissionId,
-    "Sí"
+    "Sí",
+    lead.program
   ]);
+}
+
+function ensureHeaders_(sheet) {
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(LEAD_HEADERS);
+  } else {
+    const columnCount = Math.max(sheet.getLastColumn(), 1);
+    const headers = sheet.getRange(1, 1, 1, columnCount).getValues()[0];
+    LEAD_HEADERS.forEach(function(header) {
+      if (headers.indexOf(header) === -1) {
+        sheet.getRange(1, sheet.getLastColumn() + 1).setValue(header);
+        headers.push(header);
+      }
+    });
+  }
+  sheet.setFrozenRows(1);
 }
 
 function createContact_(lead) {
@@ -105,6 +124,7 @@ function createContact_(lead) {
     organizations: [{ name: "Prime Health", title: "Website Lead" }],
     userDefined: [
       { key: "Source", value: "Prime Health website" },
+      { key: "Program", value: lead.program },
       { key: "Submission ID", value: lead.submissionId }
     ]
   };
@@ -120,6 +140,7 @@ function sendNotification_(lead, resourceName) {
     "Nombre: " + lead.name,
     "Correo: " + lead.email,
     "Teléfono: " + lead.phone,
+    "Programa: " + lead.program,
     "Idioma: " + lead.language.toUpperCase(),
     "Fecha: " + lead.submittedAt,
     "Google Contact: " + (resourceName || "Creado"), "",
@@ -130,6 +151,7 @@ function sendNotification_(lead, resourceName) {
     "<p><strong>Nombre:</strong> " + escapeHtml_(lead.name) + "</p>",
     "<p><strong>Correo:</strong> <a href=\"mailto:" + encodeURIComponent(lead.email) + "\">" + escapeHtml_(lead.email) + "</a></p>",
     "<p><strong>Teléfono:</strong> <a href=\"tel:" + escapeHtml_(lead.phone) + "\">" + escapeHtml_(lead.phone) + "</a></p>",
+    "<p><strong>Programa:</strong> " + escapeHtml_(lead.program) + "</p>",
     "<p><strong>Idioma:</strong> " + escapeHtml_(lead.language.toUpperCase()) + "</p>",
     "<p><strong>Fecha:</strong> " + escapeHtml_(lead.submittedAt) + "</p>",
     "<p>El contacto fue guardado en Google Contacts y registrado en Google Sheets.</p>"

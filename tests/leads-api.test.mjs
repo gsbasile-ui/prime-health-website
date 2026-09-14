@@ -7,6 +7,7 @@ const validLead = {
   name: "Test Lead",
   email: "lead@example.com",
   phone: "+39 353 000 0000",
+  program: "transformation",
   consent: true,
   website: "",
   language: "es",
@@ -45,6 +46,11 @@ test("rejects incomplete contact details", async () => {
   assert.equal(response.status, 400);
 });
 
+test("rejects an unknown program", async () => {
+  const response = await leads.fetch(request({ ...validLead, program: "medical" }));
+  assert.equal(response.status, 400);
+});
+
 test("accepts honeypot spam without calling the webhook", async () => {
   globalThis.fetch = () => {
     throw new Error("Webhook should not be called");
@@ -72,6 +78,23 @@ test("forwards a validated lead without exposing the secret", async () => {
   assert.equal(response.status, 201);
   assert.deepEqual(publicBody, { ok: true });
   assert.equal(forwarded.name, validLead.name);
+  assert.equal(forwarded.program, "transformation");
   assert.equal(forwarded.secret, "test-secret");
   assert.equal("secret" in publicBody, false);
+});
+
+test("defaults an omitted program to general", async () => {
+  process.env.GOOGLE_APPS_SCRIPT_WEBHOOK_URL = "https://script.google.com/test";
+  process.env.PRIME_HEALTH_LEADS_SECRET = "test-secret";
+  let forwarded;
+  globalThis.fetch = async (_url, options) => {
+    forwarded = JSON.parse(options.body);
+    return Response.json({ ok: true });
+  };
+
+  const leadWithoutProgram = { ...validLead };
+  delete leadWithoutProgram.program;
+  const response = await leads.fetch(request(leadWithoutProgram));
+  assert.equal(response.status, 201);
+  assert.equal(forwarded.program, "general");
 });

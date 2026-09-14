@@ -2,6 +2,7 @@ const MAX_BODY_BYTES = 10_000;
 const MIN_FORM_TIME_MS = 1_500;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_PATTERN = /^[+()\d\s.-]{7,24}$/;
+const PROGRAMS = new Set(["essential", "transformation", "performance", "prime-elite", "general"]);
 
 function json(data, status, headers = {}) {
   return Response.json(data, {
@@ -50,12 +51,14 @@ export default {
     const name = clean(body.name, 80);
     const email = clean(body.email, 160).toLowerCase();
     const phone = clean(body.phone, 24);
+    const program = clean(body.program, 24) || "general";
     const language = ["en", "es", "de"].includes(body.language) ? body.language : "es";
     const startedAt = Number(body.startedAt);
     const submittedTooFast = Number.isFinite(startedAt) && Date.now() - startedAt < MIN_FORM_TIME_MS;
     const isValid = name.length >= 2
       && EMAIL_PATTERN.test(email)
       && PHONE_PATTERN.test(phone)
+      && PROGRAMS.has(program)
       && body.consent === true
       && !submittedTooFast;
 
@@ -80,6 +83,7 @@ export default {
           name,
           email,
           phone,
+          program,
           language,
           consent: true
         }),
